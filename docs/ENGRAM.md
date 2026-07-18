@@ -6,5 +6,6 @@ This repository is prepared for use with [Engram](https://github.com/nowo-tech/e
 
 Key references:
 
-- [BUNDLES_STANDARDS_PROMPT](../BUNDLES_STANDARDS_PROMPT.md) (in the parent repo) for bundle structure, Makefile, Docker, docs, and CI.
+- [Spec-driven development](SPEC-DRIVEN-DEVELOPMENT.md) for local product behavior and `REQ-*` anchors (do not duplicate checklist prose here).
+- [BUNDLES_STANDARDS_PROMPT](../BUNDLES_STANDARDS_PROMPT.md) (in the parent repo) for bundle structure, Makefile, Docker, docs, and CI when working from the workspace.
 - This bundle follows the same layout as other Nowo bundles (e.g. TwigInspectorBundle): `src/`, `tests/`, `docs/`, root tooling (PHP-CS-Fixer, Rector, PHPStan, PHPUnit).

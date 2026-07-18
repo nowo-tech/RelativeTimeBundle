@@ -23,12 +23,10 @@ Symfony bundle that formats a `DateTime` (or timestamp / date string) as a **loc
 
 ## Documentation
 
-- [GitHub Actions CI requirements](docs/GITHUB_CI.md)
 - [Installation](docs/INSTALLATION.md)
 - [Configuration](docs/CONFIGURATION.md)
 - [Usage](docs/USAGE.md)
 - [Contributing](docs/CONTRIBUTING.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Changelog](docs/CHANGELOG.md)
 - [Upgrading](docs/UPGRADING.md)
 - [Release](docs/RELEASE.md)
@@ -39,6 +37,8 @@ Symfony bundle that formats a `DateTime` (or timestamp / date string) as a **loc
 
 ### Additional documentation
 
+- [GitHub Actions CI requirements](docs/GITHUB_CI.md)
+- [Code of Conduct](docs/CODE_OF_CONDUCT.md)
 - [Demo (Symfony 7 & 8)](demo/README.md) — run `make -C demo up-symfony8` from the bundle root.
 - [Demo with FrankenPHP (development and production)](docs/DEMO-FRANKENPHP.md)
 
@@ -70,6 +70,12 @@ public function label(\DateTimeInterface $createdAt): string
 
 ## Tests and coverage
 
+| Language | Lines (approx.) | Command |
+| --- | --- | --- |
+| PHP | ~100% | `make test-coverage` |
+| TypeScript | N/A | — |
+| Python | N/A | — |
+
 ```bash
 make test
 make test-coverage
@@ -77,9 +83,16 @@ make validate-translations
 make release-check
 ```
 
-- **PHP:** 100% lines (unit + integration)
-- **TS/JS:** N/A
-- **Python:** N/A
+PHP coverage target is ~100% (currently ~100%; see [Release](docs/RELEASE.md)).
+
+## Demo
+
+```bash
+make -C demo up-symfony8
+# Demo started at: http://localhost:8008
+```
+
+FrankenPHP worker mode for production demos is documented in [DEMO-FRANKENPHP.md](docs/DEMO-FRANKENPHP.md).
 
 ## Version policy
 

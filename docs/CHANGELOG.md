@@ -8,10 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [1.0.1 - 2026-07-18](#101---2026-07-18)
+  - [Changed](#changed)
 - [1.0.0 - 2026-07-18](#100---2026-07-18)
   - [Added](#added)
 
 ## [Unreleased]
+
+## [1.0.1] - 2026-07-18
+
+### Changed
+
+- REQ compliance: root only `README.md` (Code of Conduct moved to `docs/`); README Documentation order per REQ-DOCS-002; coverage section uses ~100%; `docs/SECURITY.md` adds Release security checklist (12.4.1); expanded Spec-driven development / Engram cross-links.
 
 ## [1.0.0] - 2026-07-18
 
@@ -24,5 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0
