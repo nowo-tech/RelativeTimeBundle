@@ -1,0 +1,15 @@
+# Relative Time Bundle Configuration
+# This file was automatically created by Symfony Flex.
+# See docs/CONFIGURATION.md for all options.
+
+nowo_relative_time:
+    # Absolute difference (seconds) below which "just now" is used
+    just_now_threshold_seconds: 10
+    # Largest unit when formatting: year|month|week|day|hour|minute|second
+    max_unit: year
+    # Translation domain (override catalogues in translations/NowoRelativeTimeBundle.<locale>.yaml)
+    translation_domain: NowoRelativeTimeBundle
+    # Optional default locale (null = translator / request locale)
+    # default_locale: es
+    # Optional timezone for parsing date strings
+    # default_timezone: Europe/Madrid

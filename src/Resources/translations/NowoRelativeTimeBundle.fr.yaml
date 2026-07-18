@@ -1,0 +1,18 @@
+relative_time:
+  just_now: "à l'instant"
+  ago:
+    second: 'il y a %count% seconde|il y a %count% secondes'
+    minute: 'il y a %count% minute|il y a %count% minutes'
+    hour: 'il y a %count% heure|il y a %count% heures'
+    day: 'il y a %count% jour|il y a %count% jours'
+    week: 'il y a %count% semaine|il y a %count% semaines'
+    month: 'il y a %count% mois|il y a %count% mois'
+    year: 'il y a %count% an|il y a %count% ans'
+  in:
+    second: 'dans %count% seconde|dans %count% secondes'
+    minute: 'dans %count% minute|dans %count% minutes'
+    hour: 'dans %count% heure|dans %count% heures'
+    day: 'dans %count% jour|dans %count% jours'
+    week: 'dans %count% semaine|dans %count% semaines'
+    month: 'dans %count% mois|dans %count% mois'
+    year: 'dans %count% an|dans %count% ans'

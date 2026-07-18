@@ -1,0 +1,4 @@
+nowo_relative_time:
+    just_now_threshold_seconds: 10
+    max_unit: year
+    translation_domain: NowoRelativeTimeBundle
