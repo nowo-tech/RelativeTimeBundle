@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Relative Time Bundle - Demo - {{ version_badge }}{% endblock %}
+
+{% block body %}
+    <h1>Relative Time Bundle – Demo</h1>
+    <p><span class="badge">{{ version_badge }}</span></p>
+    <p>Reference now: <code>{{ now|date('Y-m-d H:i:s') }}</code></p>
+
+    <section>
+        <h2>Service + Twig filter (multi-locale)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Case</th>
+                    <th>ISO</th>
+                    <th>en</th>
+                    <th>es</th>
+                    <th>fr</th>
+                    <th>de</th>
+                    <th>Twig |relative_time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row.label }}</td>
+                    <td><code>{{ row.iso }}</code></td>
+                    <td>{{ row.en }}</td>
+                    <td>{{ row.es }}</td>
+                    <td>{{ row.fr }}</td>
+                    <td>{{ row.de }}</td>
+                    <td>{{ row.iso|relative_time(null, now) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Twig helpers</h2>
+        <p><code>ago</code> filter: {{ rows[2].iso|ago(null, now) }}</p>
+        <p><code>relative_time()</code> function (es): {{ relative_time(rows[2].iso, 'es', now) }}</p>
+    </section>
+{% endblock %}

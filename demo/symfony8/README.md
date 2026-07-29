@@ -1,0 +1,33 @@
+# Relative Time Bundle - Symfony 8 Demo
+
+Demo application for [`nowo-tech/relative-time-bundle`](https://packagist.org/packages/nowo-tech/relative-time-bundle) ([GitHub](https://github.com/nowo-tech/RelativeTimeBundle)) on Symfony 8.1.
+
+## Quick start
+
+From the **bundle root** (so the path repo can resolve):
+
+```bash
+make -C demo up-symfony8
+```
+
+Or from this directory:
+
+```bash
+cp .env.example .env
+docker-compose up -d
+# wait a few seconds, then:
+docker-compose exec php composer install --no-interaction
+```
+
+Open http://localhost:8008 (or the `PORT` in `.env`).
+
+## Path repository
+
+The bundle is loaded from `/var/relative-time-bundle` inside the container, which is mounted from the repo root (`../..`). Ensure you run from the bundle repository so that `docker-compose` mounts the correct path.
+
+## Commands
+
+- `make up` / `make down` – start/stop
+- `make update-bundle` – update the bundle from the path and clear cache
+- `make test` – run tests
+- `make shell` – shell in container

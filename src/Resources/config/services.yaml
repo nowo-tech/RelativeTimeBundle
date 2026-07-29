@@ -1,0 +1,22 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter:
+    class: Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter
+    arguments:
+      $translator: '@translator'
+      $translationDomain: '%nowo_relative_time.translation_domain%'
+      $justNowThresholdSeconds: '%nowo_relative_time.just_now_threshold_seconds%'
+      $maxUnit: '%nowo_relative_time.max_unit%'
+      $defaultLocale: '%nowo_relative_time.default_locale%'
+      $defaultTimezone: '%nowo_relative_time.default_timezone%'
+
+  Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension:
+    class: Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension
+    arguments:
+      $formatter: '@Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter'
+    tags:
+      - { name: twig.extension }

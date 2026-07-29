@@ -1,0 +1,18 @@
+relative_time:
+  just_now: 'zojuist'
+  ago:
+    second: '%count% seconde geleden|%count% seconden geleden'
+    minute: '%count% minuut geleden|%count% minuten geleden'
+    hour: '%count% uur geleden|%count% uur geleden'
+    day: '%count% dag geleden|%count% dagen geleden'
+    week: '%count% week geleden|%count% weken geleden'
+    month: '%count% maand geleden|%count% maanden geleden'
+    year: '%count% jaar geleden|%count% jaar geleden'
+  in:
+    second: 'over %count% seconde|over %count% seconden'
+    minute: 'over %count% minuut|over %count% minuten'
+    hour: 'over %count% uur|over %count% uur'
+    day: 'over %count% dag|over %count% dagen'
+    week: 'over %count% week|over %count% weken'
+    month: 'over %count% maand|over %count% maanden'
+    year: 'over %count% jaar|over %count% jaar'

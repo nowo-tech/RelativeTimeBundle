@@ -1,0 +1,18 @@
+relative_time:
+  just_now: 'agora mesmo'
+  ago:
+    second: 'há %count% segundo|há %count% segundos'
+    minute: 'há %count% minuto|há %count% minutos'
+    hour: 'há %count% hora|há %count% horas'
+    day: 'há %count% dia|há %count% dias'
+    week: 'há %count% semana|há %count% semanas'
+    month: 'há %count% mês|há %count% meses'
+    year: 'há %count% ano|há %count% anos'
+  in:
+    second: 'em %count% segundo|em %count% segundos'
+    minute: 'em %count% minuto|em %count% minutos'
+    hour: 'em %count% hora|em %count% horas'
+    day: 'em %count% dia|em %count% dias'
+    week: 'em %count% semana|em %count% semanas'
+    month: 'em %count% mês|em %count% meses'
+    year: 'em %count% ano|em %count% anos'

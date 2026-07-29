@@ -1,0 +1,18 @@
+relative_time:
+  just_now: 'hace un momento'
+  ago:
+    second: 'hace %count% segundo|hace %count% segundos'
+    minute: 'hace %count% minuto|hace %count% minutos'
+    hour: 'hace %count% hora|hace %count% horas'
+    day: 'hace %count% día|hace %count% días'
+    week: 'hace %count% semana|hace %count% semanas'
+    month: 'hace %count% mes|hace %count% meses'
+    year: 'hace %count% año|hace %count% años'
+  in:
+    second: 'en %count% segundo|en %count% segundos'
+    minute: 'en %count% minuto|en %count% minutos'
+    hour: 'en %count% hora|en %count% horas'
+    day: 'en %count% día|en %count% días'
+    week: 'en %count% semana|en %count% semanas'
+    month: 'en %count% mes|en %count% meses'
+    year: 'en %count% año|en %count% años'

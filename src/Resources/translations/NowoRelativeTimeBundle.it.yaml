@@ -1,0 +1,18 @@
+relative_time:
+  just_now: 'proprio adesso'
+  ago:
+    second: '%count% secondo fa|%count% secondi fa'
+    minute: '%count% minuto fa|%count% minuti fa'
+    hour: '%count% ora fa|%count% ore fa'
+    day: '%count% giorno fa|%count% giorni fa'
+    week: '%count% settimana fa|%count% settimane fa'
+    month: '%count% mese fa|%count% mesi fa'
+    year: '%count% anno fa|%count% anni fa'
+  in:
+    second: 'tra %count% secondo|tra %count% secondi'
+    minute: 'tra %count% minuto|tra %count% minuti'
+    hour: 'tra %count% ora|tra %count% ore'
+    day: 'tra %count% giorno|tra %count% giorni'
+    week: 'tra %count% settimana|tra %count% settimane'
+    month: 'tra %count% mese|tra %count% mesi'
+    year: 'tra %count% anno|tra %count% anni'

@@ -1,0 +1,12 @@
+Relative Time Bundle has been installed!
+
+The following file has been created:
+  - config/packages/nowo_relative_time.yaml (default configuration)
+
+In Twig:
+
+  {{ createdAt|relative_time }}
+  {{ createdAt|ago }}
+  {{ relative_time(createdAt, 'es') }}
+
+See docs/INSTALLATION.md and docs/USAGE.md for configuration and i18n overrides.
