@@ -2,15 +2,23 @@
 
 ## Table of contents
 
+- [From 1.0.1 to 1.0.2](#from-101-to-102)
 - [From 1.0.0 to 1.0.1](#from-100-to-101)
 - [From nothing → 1.0.0](#from-nothing--100)
+
+## From 1.0.1 to 1.0.2
+
+No breaking changes to the bundle API or configuration.
+
+- **Integrators:** No application code or config changes required. Continue requiring `nowo-tech/relative-time-bundle: ^1.0`.
+- **Contributors / demos:** FrankenPHP mode is controlled by `FRANKENPHP_MODE` (`worker` default, `classic` for hot-reload). Recreate demo containers after changing it. Code of Conduct is at repository root `CODE_OF_CONDUCT.md`.
 
 ## From 1.0.0 to 1.0.1
 
 No breaking changes to the bundle API or configuration.
 
 - **Integrators:** No application code or config changes required.
-- **Docs only:** Code of Conduct path is now `docs/CODE_OF_CONDUCT.md` (no longer at repo root). Release security checklist (12.4.1) lives in [SECURITY.md](SECURITY.md).
+- **Docs only:** Code of Conduct lived under `docs/CODE_OF_CONDUCT.md` in 1.0.1 (moved back to repo root in 1.0.2). Release security checklist (12.4.1) lives in [SECURITY.md](SECURITY.md).
 
 ## From nothing → 1.0.0
 

@@ -29,3 +29,4 @@
 *.tgz
 *.rar
 *.7z
+composer.lock

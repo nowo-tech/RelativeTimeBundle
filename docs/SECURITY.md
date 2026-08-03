@@ -32,5 +32,17 @@ Before tagging a release, confirm:
 | **Cryptography** | Not used. |
 | **Permissions / exposure** | No routes or admin UI; service/Twig only. |
 | **Limits / DoS** | Fixed unit table; invalid dates fail fast with exceptions. |
+| **AI security audit (REQ-SEC-004)** | Pass recorded in monorepo `BUNDLES_SECURITY_ANALYSIS.md`. |
 
 Record confirmation in the release PR or tag notes.
+
+## AI security audit (REQ-SEC-004)
+
+| Field | Value |
+|-------|--------|
+| Date | 2026-07-30 |
+| Method | Cursor / Nowo static AI security review (diff + baseline `src/` / Twig / recipe) |
+| Grade | **Pass (good)** |
+| Overall risk | **Low** |
+| Open Critical / High / Medium | None |
+| Notes | No persistence, routes, or secrets; Twig filters not HTML-safe (auto-escaped); remediations were docs/Makefile/CoC only |
