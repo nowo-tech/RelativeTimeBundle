@@ -141,7 +141,9 @@ verify-all:
 	@$(MAKE) verify-symfony7
 	@$(MAKE) verify-symfony8
 
-release-check: test-coverage-all release-verify
+release-check:
+	@$(MAKE) -C symfony7 release-check
+	@$(MAKE) -C symfony8 release-check
 	@echo "All demos passed release-check."
 
 release-verify:
@@ -165,4 +167,4 @@ clean:
 
 # REQ-MAKE-008: update-deps-all (REQ-MAKE-008)
 BUNDLE_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..)
-include $(BUNDLE_ROOT)/../.scripts/Makefile.demo-aggregate-update-deps.mk
+-include $(BUNDLE_ROOT)/../.scripts/Makefile.demo-aggregate-update-deps.mk

@@ -1,6 +1,6 @@
 # Makefile for Symfony 7.4 Demo (Relative Time Bundle)
 
-.PHONY: help up down build install shell logs test test-coverage cache-clear update-bundle ensure-up verify
+.PHONY: help up down build install shell logs test test-coverage cache-clear update-bundle ensure-up verify release-check
 
 help:
 	@echo "Relative Time Bundle - Symfony 7.4 Demo"
@@ -38,6 +38,7 @@ build:
 	docker-compose build --no-cache
 
 ensure-up:
+	@if [ ! -f .env ]; then cp .env.example .env 2>/dev/null || true; fi
 	@if ! docker-compose exec -T php true 2>/dev/null; then \
 		docker-compose up -d; \
 		sleep 3; \
@@ -73,9 +74,11 @@ verify:
 	code=$$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:$$port 2>/dev/null || echo "000"); \
 	if [ "$$code" = "200" ]; then echo "OK (HTTP $$code)"; else echo "Failed (HTTP $$code)"; exit 1; fi
 
+release-check: ensure-up update-bundle test test-coverage
 
 # REQ-MAKE-008: update-deps (REQ-MAKE-008)
+# Optional: monorepo helper absent on standalone GitHub Actions checkout (REQ-MAKE-009).
 COMPOSE := docker-compose
 SERVICE_PHP := php
 BUNDLE_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../..)
-include $(BUNDLE_ROOT)/../.scripts/Makefile.demo-update-deps.mk
+-include $(BUNDLE_ROOT)/../.scripts/Makefile.demo-update-deps.mk

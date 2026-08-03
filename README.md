@@ -11,7 +11,7 @@
 
 > ⭐ **Found this useful?** Install from [Packagist](https://packagist.org/packages/nowo-tech/relative-time-bundle) and give it a star on [GitHub](https://github.com/nowo-tech/RelativeTimeBundle).
 
-Symfony bundle that formats a `DateTime` (or timestamp / date string) as a **localized relative time** string: *just now*, *5 minutes ago*, *in 2 hours*, *hace un momento*, *hace 3 días*, and so on.
+Symfony bundle that formats a `DateTime` (or timestamp / date string) as a localized relative time string: just now, 5 minutes ago, in 2 hours, hace un momento, hace 3 días, and so on.
 
 ## Features
 
@@ -20,27 +20,6 @@ Symfony bundle that formats a `DateTime` (or timestamp / date string) as a **loc
 - **i18n** catalogues for `en`, `es`, `it`, `fr`, `pt`, `de`, `nl` (domain `NowoRelativeTimeBundle`)
 - Configurable `just_now_threshold_seconds`, `max_unit`, locale and timezone defaults
 - App-level translation overrides (REQ-I18N-001)
-
-## Documentation
-
-- [Installation](docs/INSTALLATION.md)
-- [Configuration](docs/CONFIGURATION.md)
-- [Usage](docs/USAGE.md)
-- [Contributing](docs/CONTRIBUTING.md)
-- [Changelog](docs/CHANGELOG.md)
-- [Upgrading](docs/UPGRADING.md)
-- [Release](docs/RELEASE.md)
-- [Security](docs/SECURITY.md)
-- [Engram](docs/ENGRAM.md)
-- [Spec-driven development](docs/SPEC-DRIVEN-DEVELOPMENT.md)
-- [GitHub Spec Kit](docs/SPEC-KIT.md)
-
-### Additional documentation
-
-- [GitHub Actions CI requirements](docs/GITHUB_CI.md)
-- [Code of Conduct](docs/CODE_OF_CONDUCT.md)
-- [Demo (Symfony 7 & 8)](demo/README.md) — run `make -C demo up-symfony8` from the bundle root.
-- [Demo with FrankenPHP (development and production)](docs/DEMO-FRANKENPHP.md)
 
 ## Quick example
 
@@ -68,11 +47,41 @@ public function label(\DateTimeInterface $createdAt): string
 - Symfony 7.4+ or 8.x (`symfony/translation`, Twig)
 - Twig 3.8+ or 4.x
 
+## Demo
+
+```bash
+make -C demo up-symfony8
+# Demo started at: http://localhost:8008
+```
+
+FrankenPHP worker mode for production demos is documented in [DEMO-FRANKENPHP.md](docs/DEMO-FRANKENPHP.md).
+
+## Documentation
+
+- [Installation](docs/INSTALLATION.md)
+- [Configuration](docs/CONFIGURATION.md)
+- [Usage](docs/USAGE.md)
+- [Contributing](docs/CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Changelog](docs/CHANGELOG.md)
+- [Upgrading](docs/UPGRADING.md)
+- [Release](docs/RELEASE.md)
+- [Security](docs/SECURITY.md)
+- [Engram](docs/ENGRAM.md)
+- [Spec-driven development](docs/SPEC-DRIVEN-DEVELOPMENT.md)
+- [GitHub Spec Kit](docs/SPEC-KIT.md)
+
+### Additional documentation
+
+- [GitHub Actions CI requirements](docs/GITHUB_CI.md)
+- [Demo (Symfony 7 & 8)](demo/README.md) — run `make -C demo up-symfony8` from the bundle root.
+- [Demo with FrankenPHP (development and production)](docs/DEMO-FRANKENPHP.md)
+
 ## Tests and coverage
 
 | Language | Lines (approx.) | Command |
 | --- | --- | --- |
-| PHP | ~100% | `make test-coverage` |
+| PHP | **100%** | `make test-coverage` |
 | TypeScript | N/A | — |
 | Python | N/A | — |
 
@@ -83,16 +92,7 @@ make validate-translations
 make release-check
 ```
 
-PHP coverage target is ~100% (currently ~100%; see [Release](docs/RELEASE.md)).
-
-## Demo
-
-```bash
-make -C demo up-symfony8
-# Demo started at: http://localhost:8008
-```
-
-FrankenPHP worker mode for production demos is documented in [DEMO-FRANKENPHP.md](docs/DEMO-FRANKENPHP.md).
+CI enforces PHP coverage at **100%**.
 
 ## Version policy
 

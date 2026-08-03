@@ -1,5 +1,20 @@
 # Spec-driven development
 
+## Table of contents
+
+- [Purpose](#purpose)
+- [Product layers](#product-layers)
+- [User stories](#user-stories)
+- [Bundle functional scope](#bundle-functional-scope)
+- [Public API (Packagist contract)](#public-api-packagist-contract)
+- [Validating the functional spec](#validating-the-functional-spec)
+- [Requirement identifiers (Makefile / demos)](#requirement-identifiers-makefile-demos)
+- [Contributor workflow](#contributor-workflow)
+- [Relationship with Engram](#relationship-with-engram)
+- [GitHub Spec Kit](#github-spec-kit)
+  - [Spec Kit workflow (summary)](#spec-kit-workflow-summary)
+- [See also](#see-also)
+
 ## Purpose
 
 This document describes **what Relative Time Bundle guarantees**, how behavior is proven, and how Spec Kit / Engram fit into the maintainer workflow.

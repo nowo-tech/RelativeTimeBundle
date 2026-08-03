@@ -21,6 +21,7 @@ services:
       - COMPOSER_MAX_PARALLEL_HTTP=4
       - APP_ENV=dev
       - APP_DEBUG=1
+      - FRANKENPHP_MODE=${FRANKENPHP_MODE:-worker}
       - APP_SECRET=${APP_SECRET:-demo-secret}
     # Mitigate Docker/WSL DNS failures (composer curl error 6: Could not resolve host).
     dns:

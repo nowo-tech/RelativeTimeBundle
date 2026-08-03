@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "/var/relative-time-bundle",
-                "reference": "fa618972ab15f074ab5b9f28b7df297a51463bed"
+                "reference": "4d697add2536a86828b910a420ccea4412972340"
             },
             "require": {
                 "php": ">=8.2 <8.6",
