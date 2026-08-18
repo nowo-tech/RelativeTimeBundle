@@ -16,6 +16,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-08-18
+
+### Changed
+
+- **Demos:** pin `nowo-tech/hot-reload-bundle` to `^1.4` with FrankenPHP Mercure/`hot_reload` (`dev`/`test` only).
+- **Demos:** Symfony 8 only; Symfony 6/7 demo apps removed.
+
+[1.0.3]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.3
+
 ## [1.0.2] - 2026-08-03
 
 ### Changed
@@ -48,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.3...HEAD
 [1.0.2]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.2
 [1.0.1]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0
