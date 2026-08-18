@@ -2,9 +2,14 @@
 
 ## Table of contents
 
+- [From 1.0.2 to 1.0.3](#from-102-to-103)
 - [From 1.0.1 to 1.0.2](#from-101-to-102)
 - [From 1.0.0 to 1.0.1](#from-100-to-101)
 - [From nothing → 1.0.0](#from-nothing--100)
+
+## From 1.0.2 to 1.0.3
+
+No breaking changes. Demos only: Hot Reload Bundle `^1.4`; Symfony 8 is the only shipped demo (Symfony 6/7 demo apps removed).
 
 ## From 1.0.1 to 1.0.2
 
