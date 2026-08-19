@@ -16,6 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-08-19
+
+### Security
+
+- **CI:** run `composer audit --locked` after dependency install (REQ-SEC / P3).
+
+[1.0.4]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.4
+
 ## [1.0.3] - 2026-08-18
 
 ### Changed
