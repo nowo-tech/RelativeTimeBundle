@@ -2,6 +2,10 @@
 #
 # Static analysis on src/ and tests/ (level 8).
 # Run: make phpstan
+includes:
+    - vendor/nowo-tech/phpstan-frankenphp/ruleset-classic.neon
+    - vendor/nowo-tech/phpstan-frankenphp/ruleset-worker.neon
+
 parameters:
     level: 8
     paths:
@@ -12,3 +16,4 @@ parameters:
         - vendor/*
     reportUnmatchedIgnoredErrors: false
     treatPhpDocTypesAsCertain: false
+    ignoreErrors: []
