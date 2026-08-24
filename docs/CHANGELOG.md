@@ -16,6 +16,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+
+## [1.0.5] - 2026-08-24
+
+### Changed
+
+- Raise minimum PHP to **8.2** and sync README badge (REQ-SF-001).
+- **Makefile:** detect Docker Compose V2 (REQ-MAKE-010).
+- **QA:** add `phpstan-frankenphp` extension (REQ-CS-005).
+- **README:** FrankenPHP-friendly worker-mode banner (REQ-DOCS-017).
+- **Docs:** PHP-FIG PSR evaluation (REQ-CS-007).
+
+### Notes
+
+- **No API or configuration changes** for integrators unless noted above.
+
+[1.0.5]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.5
+
 ## [1.0.4] - 2026-08-19
 
 ### Security

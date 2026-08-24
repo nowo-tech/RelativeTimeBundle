@@ -2,11 +2,29 @@
 
 ## Table of contents
 
+
+- [From 1.0.4 to 1.0.5](#from-104-to-105)
 - [From 1.0.3 to 1.0.4](#from-103-to-104)
 - [From 1.0.2 to 1.0.3](#from-102-to-103)
 - [From 1.0.1 to 1.0.2](#from-101-to-102)
 - [From 1.0.0 to 1.0.1](#from-100-to-101)
 - [From nothing → 1.0.0](#from-nothing--100)
+
+## From 1.0.4 to 1.0.5
+
+Review the [CHANGELOG](CHANGELOG.md) entry. PHP **8.2+** may now be required.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
+
+## From 1.0.4 to 1.0.5
+
+Review the [CHANGELOG](CHANGELOG.md) entry. PHP **8.2+** may now be required.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
 
 ## From 1.0.3 to 1.0.4
 
