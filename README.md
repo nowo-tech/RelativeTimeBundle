@@ -13,6 +13,10 @@
 
 Symfony bundle that formats a `DateTime` (or timestamp / date string) as a localized relative time string: just now, 5 minutes ago, in 2 hours, hace un momento, hace 3 días, and so on.
 
+![FrankenPHP Friendly Worker Mode](docs/images/frankenphp-friendly.png)
+
+This bundle is **FrankenPHP worker mode friendly**.
+
 ## Features
 
 - **RelativeTimeFormatter** service with past and future wording
