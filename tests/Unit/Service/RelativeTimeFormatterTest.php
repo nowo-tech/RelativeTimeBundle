@@ -144,4 +144,21 @@ final class RelativeTimeFormatterTest extends TestCase
         $formatter = new RelativeTimeFormatter($this->translator, 'NowoRelativeTimeBundle', 0, 'year', null, 'UTC');
         self::assertSame('en:relative_time.in.second:1', $formatter->format($this->now, 'en', $this->now));
     }
+
+    /**
+     * Shared formatter instance under FrankenPHP worker with FRANKENPHP_RESET_KERNEL=false:
+     * consecutive format() calls must not leak locale or reference "now" into later calls.
+     */
+    public function testSharedInstanceDoesNotLeakLocaleAcrossConsecutiveCalls(): void
+    {
+        $date = $this->now->modify('-5 minutes');
+
+        self::assertSame('es:relative_time.ago.minute:5', $this->formatter->format($date, 'es', $this->now));
+        self::assertSame('en:relative_time.ago.minute:5', $this->formatter->format($date, 'en', $this->now));
+        self::assertSame('fr:relative_time.ago.minute:5', $this->formatter->format($date, 'fr', $this->now));
+
+        $otherNow = $this->now->modify('+1 hour');
+        self::assertSame('en:relative_time.ago.hour:1', $this->formatter->format($this->now, 'en', $otherNow));
+        self::assertSame('en:relative_time.ago.minute:5', $this->formatter->format($date, 'en', $this->now));
+    }
 }

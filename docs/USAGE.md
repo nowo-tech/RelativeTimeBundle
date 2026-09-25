@@ -25,6 +25,8 @@ Optional third argument `$now` fixes the reference instant (useful in tests).
 
 `ago()` is an alias of `format()`.
 
+On FrankenPHP worker with sticky Kernel (`FRANKENPHP_RESET_KERNEL=false`), pass `$locale` explicitly when formatting outside a normal HTTP request (for example Messenger / emails). The shared formatter holds no per-request state; see [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md).
+
 ## Twig
 
 ```twig

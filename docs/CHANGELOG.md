@@ -8,14 +8,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [1.0.6 - 2026-09-25](#106---2026-09-25)
+- [1.0.5 - 2026-08-24](#105---2026-08-24)
+- [1.0.4 - 2026-08-19](#104---2026-08-19)
+- [1.0.3 - 2026-08-18](#103---2026-08-18)
 - [1.0.2 - 2026-08-03](#102---2026-08-03)
 - [1.0.1 - 2026-07-18](#101---2026-07-18)
-  - [Changed](#changed)
 - [1.0.0 - 2026-07-18](#100---2026-07-18)
-  - [Added](#added)
 
 ## [Unreleased]
 
+
+## [1.0.6] - 2026-09-25
+
+### Added
+
+- FrankenPHP worker audit for sticky Kernel (`FRANKENPHP_RESET_KERNEL=false`): [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md) — **100% compatible** under Scenario B; no remediations required.
+- Spec **FR-WORKER-001** / **US-05** documenting worker + long-lived kernel guarantees.
+- Unit regression `testSharedInstanceDoesNotLeakLocaleAcrossConsecutiveCalls` (shared formatter, no kernel reset).
+
+### Changed
+
+- PHPStan now uses `nowo-tech/phpstan-frankenphp` `ruleset-worker-strict.neon` (includes worker rules).
+- Docs: README / UPGRADING / RELEASE / baseline spec and code inventory updated for the worker audit.
+
+### Notes
+
+- **No API or configuration changes** for integrators. Continue requiring `nowo-tech/relative-time-bundle: ^1.0`.
+
+[1.0.6]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.6
 
 ## [1.0.5] - 2026-08-24
 
@@ -65,11 +86,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - **No API or configuration changes** for integrators. Continue requiring `nowo-tech/relative-time-bundle: ^1.0`.
 
+[1.0.2]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.2
+
 ## [1.0.1] - 2026-07-18
 
 ### Changed
 
 - REQ compliance: root only `README.md` (Code of Conduct moved to `docs/`); README Documentation order per REQ-DOCS-002; coverage section uses ~100%; `docs/SECURITY.md` adds Release security checklist (12.4.1); expanded Spec-driven development / Engram cross-links.
+
+[1.0.1]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.0...v1.0.1
 
 ## [1.0.0] - 2026-07-18
 
@@ -82,7 +107,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.3...HEAD
-[1.0.2]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.2
-[1.0.1]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.0...v1.0.1
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.6...HEAD
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0

@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-
+- [From 1.0.5 to 1.0.6](#from-105-to-106)
 - [From 1.0.4 to 1.0.5](#from-104-to-105)
 - [From 1.0.3 to 1.0.4](#from-103-to-104)
 - [From 1.0.2 to 1.0.3](#from-102-to-103)
@@ -10,17 +10,22 @@
 - [From 1.0.0 to 1.0.1](#from-100-to-101)
 - [From nothing → 1.0.0](#from-nothing--100)
 
-## From 1.0.4 to 1.0.5
+## From 1.0.5 to 1.0.6
 
-Review the [CHANGELOG](CHANGELOG.md) entry. PHP **8.2+** may now be required.
+No breaking changes. **No application upgrade steps.**
 
 ```bash
 composer update nowo-tech/relative-time-bundle
 ```
 
+### Notable (non-breaking)
+
+- Confirmed **100% compatible** with FrankenPHP **worker** mode when the host runs with **`FRANKENPHP_RESET_KERNEL=false`** (sticky Kernel). See [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md).
+- Maintainer QA: PHPStan uses `ruleset-worker-strict.neon`. Spec baseline adds **FR-WORKER-001** / **US-05**.
+
 ## From 1.0.4 to 1.0.5
 
-Review the [CHANGELOG](CHANGELOG.md) entry. PHP **8.2+** may now be required.
+Review the [CHANGELOG](CHANGELOG.md) entry. PHP **8.2+** is required.
 
 ```bash
 composer update nowo-tech/relative-time-bundle

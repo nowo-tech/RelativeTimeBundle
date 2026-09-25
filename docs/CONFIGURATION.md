@@ -10,6 +10,8 @@ Root key: `nowo_relative_time`.
 | `default_locale` | string\|null | `null` | Locale when none is passed to `format()`; otherwise translator locale |
 | `default_timezone` | string\|null | `null` | Timezone used when parsing date strings |
 
+Under FrankenPHP worker with `FRANKENPHP_RESET_KERNEL=false`, prefer setting `default_timezone` explicitly so parsing does not depend on process-level `date.timezone`. See [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md).
+
 ## Example
 
 ```yaml

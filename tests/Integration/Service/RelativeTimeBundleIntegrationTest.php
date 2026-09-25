@@ -63,7 +63,7 @@ final class RelativeTimeBundleIntegrationTest extends TestCase
             }
         });
 
-        $container->compile();
+        $container->compile(true);
 
         return $container;
     }

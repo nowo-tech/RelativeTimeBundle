@@ -15,7 +15,7 @@ Symfony bundle that formats a `DateTime` (or timestamp / date string) as a local
 
 ![FrankenPHP Friendly Worker Mode](docs/images/frankenphp-friendly.png)
 
-This bundle is **FrankenPHP worker mode friendly**.
+This bundle is **FrankenPHP worker mode friendly** (including `FRANKENPHP_RESET_KERNEL=false`). See the [worker audit](docs/FRANKENPHP-WORKER-AUDIT.md).
 
 ## Features
 
@@ -81,6 +81,7 @@ FrankenPHP worker mode for production demos is documented in [DEMO-FRANKENPHP.md
 - [GitHub Actions CI requirements](docs/GITHUB_CI.md)
 - [Demo (Symfony 7 & 8)](demo/README.md) — run `make -C demo up-symfony8` from the bundle root.
 - [Demo with FrankenPHP (development and production)](docs/DEMO-FRANKENPHP.md)
+- [FrankenPHP worker audit (`reset_kernel: false`)](docs/FRANKENPHP-WORKER-AUDIT.md)
 
 ## Tests and coverage
 

@@ -2,7 +2,7 @@
 
 **Baseline spec**: [`spec.md`](spec.md)  
 **Package**: `nowo-tech/relative-time-bundle`  
-**Last audited**: 2026-07-18
+**Last audited**: 2026-09-25
 
 This file proves that **every production source artifact** under `src/` is referenced by the baseline specification. PHPUnit under `tests/` is out of scope unless promoted in the spec.
 
@@ -13,8 +13,8 @@ This file proves that **every production source artifact** under `src/` is refer
 | `NowoRelativeTimeBundle.php` | Bundle entry | FR-BUNDLE-001 |
 | `DependencyInjection/Configuration.php` | Config tree | FR-CFG-001 |
 | `DependencyInjection/NowoRelativeTimeExtension.php` | DI extension + parameters | FR-CFG-002 |
-| `Service/RelativeTimeFormatter.php` | Relative formatting engine | FR-FMT-001, FR-FMT-002, FR-FMT-003 |
-| `Twig/RelativeTimeTwigExtension.php` | Twig API | FR-TWIG-001 |
+| `Service/RelativeTimeFormatter.php` | Relative formatting engine; worker-safe (`readonly`) | FR-FMT-001, FR-FMT-002, FR-FMT-003, FR-WORKER-001 |
+| `Twig/RelativeTimeTwigExtension.php` | Twig API; worker-safe (`readonly`) | FR-TWIG-001, FR-WORKER-001 |
 
 ## Symfony config (`src/Resources/config/`)
 

@@ -1,15 +1,16 @@
 # Release
 
-Current stable: **v1.0.2** (2026-08-03).
+Current stable: **v1.0.6** (2026-09-25).
 
 Maintainers: follow this checklist before creating a new tag.
 
 ## Pre-release checklist
 
 1. **Update version and docs**
-   - Ensure [CHANGELOG.md](CHANGELOG.md) has an entry for the new version (e.g. `[1.0.2] - YYYY-MM-DD`) and that `[Unreleased]` is updated or empty.
+   - Ensure [CHANGELOG.md](CHANGELOG.md) has an entry for the new version (e.g. `[1.0.6] - YYYY-MM-DD`) and that `[Unreleased]` is updated or empty.
    - Ensure [UPGRADING.md](UPGRADING.md) mentions any behaviour changes for that version if needed.
    - Update compare links at the bottom of [CHANGELOG.md](CHANGELOG.md).
+   - When cutting a FrankenPHP / worker-related release, keep [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md) in sync with the tagged revision.
 
 2. **Run quality checks**
 
@@ -23,18 +24,18 @@ Maintainers: follow this checklist before creating a new tag.
 
    ```bash
    git status
-   git add -A && git commit -m "Release v1.0.2"   # if needed
+   git add -A && git commit -m "Release v1.0.6"   # if needed
    make check-no-cursor-coauthor
    git push origin main
    ```
 
 ## Tag and publish
 
-4. **Create an annotated tag** (replace with the version you are releasing, e.g. `v1.0.2`). Ensure you have at least one commit before tagging:
+4. **Create an annotated tag** (replace with the version you are releasing, e.g. `v1.0.6`). Ensure you have at least one commit before tagging:
 
    ```bash
-   git tag -a v1.0.2 -m "Release v1.0.2 - FrankenPHP FRANKENPHP_MODE demos and docs hygiene"
-   git push origin v1.0.2
+   git tag -a v1.0.6 -m "Release v1.0.6 - FrankenPHP worker reset_kernel=false audit (100% compatible)"
+   git push origin v1.0.6
    ```
 
    If the bundle is developed in a monorepo and released from a separate clone (e.g. `nowo-tech/RelativeTimeBundle`), run these commands in the clone that is pushed to the release remote.
