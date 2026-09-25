@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - PHPStan now uses `nowo-tech/phpstan-frankenphp` `ruleset-worker-strict.neon` (includes worker rules).
 - Docs: README / UPGRADING / RELEASE / baseline spec and code inventory updated for the worker audit.
+- Dev lockfiles refreshed via `composer-sync` / demo path reference (release-check).
 
 ### Notes
 
