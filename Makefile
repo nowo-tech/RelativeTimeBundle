@@ -7,7 +7,7 @@ COMPOSE_BIN := $(shell docker compose version >/dev/null 2>&1 && echo "docker co
 COMPOSE     := $(COMPOSE_BIN) -f $(COMPOSE_FILE)
 SERVICE_PHP := php
 
-.PHONY: help up down build shell install test test-coverage coverage-php-percent cs-check cs-fix qa clean release-check release-check-demos composer-sync rector rector-dry phpstan update validate validate-translations setup-hooks check-no-cursor-coauthor strip-cursor-coauthor-from-history
+.PHONY: help up down build shell install test test-coverage coverage-php-percent cs-check cs-fix qa clean release-check release-check-demos composer-sync rector rector-dry phpstan igor update validate validate-translations setup-hooks check-no-cursor-coauthor strip-cursor-coauthor-from-history
 
 help:
 	@echo "Relative Time Bundle - Development Commands"
@@ -28,6 +28,7 @@ help:
 	@echo "  rector        Apply Rector refactoring"
 	@echo "  rector-dry    Run Rector in dry-run mode"
 	@echo "  phpstan       Run PHPStan static analysis"
+	@echo "  igor          Run Igor worker-state audit (REQ-CS-008)"
 	@echo "  qa            Run all QA checks (cs-check + test)"
 	@echo "  release-check Pre-release: check-no-cursor-coauthor, QA, demos"
 	@echo "  composer-sync Validate composer.json and align composer.lock (no install)"
@@ -104,7 +105,11 @@ validate: ensure-up
 validate-translations: ensure-up
 	$(COMPOSE) exec -T $(SERVICE_PHP) php .scripts/validate-translation-keys.php
 
-release-check: check-no-cursor-coauthor ensure-up composer-sync cs-fix cs-check rector-dry phpstan test-coverage validate-translations release-check-demos
+
+# Run Igor worker-state audit (REQ-CS-008)
+igor: ensure-up
+	$(COMPOSE) exec -T php composer igor
+release-check: check-no-cursor-coauthor ensure-up composer-sync cs-fix cs-check rector-dry phpstan igor test-coverage validate-translations release-check-demos
 
 release-check-demos:
 	@$(MAKE) -C demo release-check
