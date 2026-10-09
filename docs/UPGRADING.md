@@ -3,6 +3,16 @@
 
 ## Unreleased
 
+## To 1.0.8
+
+From **1.0.7** — dependency refresh.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
+
+- No breaking changes. No application upgrade steps.
+
 ## To 1.0.7
 
 From **1.0.6** — REQ-CS-008 Igor FrankenPHP worker audit (igor-php require-dev, igor.json, make igor).
@@ -16,6 +26,7 @@ php bin/console cache:clear
 
 ## Table of contents
 
+- [To 1.0.8](#to-108)
 - [From 1.0.5 to 1.0.6](#from-105-to-106)
 - [From 1.0.4 to 1.0.5](#from-104-to-105)
 - [From 1.0.3 to 1.0.4](#from-103-to-104)

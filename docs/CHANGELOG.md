@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [1.0.8 - 2026-10-09](#108---2026-10-09)
+- [1.0.7 - 2026-09-27](#107---2026-09-27)
 - [1.0.6 - 2026-09-25](#106---2026-09-25)
 - [1.0.5 - 2026-08-24](#105---2026-08-24)
 - [1.0.4 - 2026-08-19](#104---2026-08-19)
@@ -17,6 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [1.0.0 - 2026-07-18](#100---2026-07-18)
 
 ## [Unreleased]
+
+## [1.0.8] - 2026-10-09
+
+### Dependencies
+
+- `igor-php/igor-php` require-dev constraint bumped to `^0.10.0`; Dependabot bumps for `twig/twig` 3.30.0, PHPStan and `nowo-tech/phpstan-frankenphp`.
+- Dev lock refreshed: Symfony 7.4.20, PHPStan 2.3.1, `phpstan/phpstan-symfony` 2.1.0, Rector 2.7.0, `nowo-tech/phpstan-frankenphp` 1.2.3.
+- Demo `symfony8`: Symfony 8.1.8, Twig 3.30.0.
+
+[1.0.8]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.8
 
 ## [1.0.7] - 2026-09-27
 
