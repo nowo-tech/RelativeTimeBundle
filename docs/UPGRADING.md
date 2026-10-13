@@ -1,7 +1,16 @@
 # Upgrading
 
-
 ## Unreleased
+
+## To 1.0.9
+
+From **1.0.8** — dependency refresh and repository maintenance.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
+
+- No breaking changes. No application upgrade steps.
 
 ## To 1.0.8
 
@@ -26,6 +35,7 @@ php bin/console cache:clear
 
 ## Table of contents
 
+- [To 1.0.9](#to-109)
 - [To 1.0.8](#to-108)
 - [From 1.0.5 to 1.0.6](#from-105-to-106)
 - [From 1.0.4 to 1.0.5](#from-104-to-105)

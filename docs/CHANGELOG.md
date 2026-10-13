@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [1.0.9 - 2026-10-13](#109---2026-10-13)
 - [1.0.8 - 2026-10-09](#108---2026-10-09)
 - [1.0.7 - 2026-09-27](#107---2026-09-27)
 - [1.0.6 - 2026-09-25](#106---2026-09-25)
@@ -20,9 +21,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.9] - 2026-10-13
+
 ### Changed
 
 - Development: `composer.json` pins `config.platform.php` to 8.2.0 so the committed lock stays installable on the minimum PHP; CI overrides the platform per matrix cell.
+
+[1.0.9]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.9
 
 ## [1.0.8] - 2026-10-09
 
