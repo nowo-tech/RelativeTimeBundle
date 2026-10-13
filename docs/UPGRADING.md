@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [To 1.1.1](#to-111)
 - [To 1.1.0](#to-110)
 - [To 1.0.9](#to-109)
 - [To 1.0.8](#to-108)
@@ -19,6 +20,14 @@
   - [Integrator checklist](#integrator-checklist)
 
 ## Unreleased
+
+## To 1.1.1
+
+From **1.1.0** — default_timezone accepts every value DateTimeZone accepts (offsets, abbreviations).
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
 
 - `default_timezone` again accepts every value `new \DateTimeZone()` accepts (identifiers, offsets such as `+02:00`, abbreviations such as `CEST`). If 1.1.0 rejected your value, it works again without changes; the error message for invalid values changed.
 
