@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [1.1.0 - 2026-10-13](#110---2026-10-13)
 - [1.0.9 - 2026-10-13](#109---2026-10-13)
 - [1.0.8 - 2026-10-09](#108---2026-10-09)
 - [1.0.7 - 2026-09-27](#107---2026-09-27)
@@ -21,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-13
+
 ### Fixed
 
 - `default_timezone` is validated against `DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC)`: a typo now fails at container build time instead of throwing on the first `format()` call. `null` and `''` still mean the PHP default timezone.
@@ -28,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - `symfony/framework-bundle` and `symfony/yaml` moved from `require-dev` to `require`. The formatter depends on the `@translator` service and FrameworkBundle loads the bundle catalogues; the extension and the catalogues are YAML. Previously an app without FrameworkBundle failed at container compile time with a missing `translator` service.
+
+[1.1.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.1.0
 
 ## [1.0.9] - 2026-10-13
 

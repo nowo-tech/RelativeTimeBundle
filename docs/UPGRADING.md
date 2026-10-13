@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## To 1.1.0
+
+From **1.0.9** — framework-bundle required for the translator; default_timezone validated.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
+
 - `symfony/framework-bundle` and `symfony/yaml` are now hard requirements (they were already needed at runtime). Standard Symfony apps are unaffected.
 - `default_timezone` must be a valid timezone identifier (e.g. `Europe/Madrid`, `UTC`); invalid values now fail at container build time.
 
@@ -38,6 +46,7 @@ php bin/console cache:clear
 
 ## Table of contents
 
+- [To 1.1.0](#to-110)
 - [To 1.0.9](#to-109)
 - [To 1.0.8](#to-108)
 - [From 1.0.5 to 1.0.6](#from-105-to-106)
