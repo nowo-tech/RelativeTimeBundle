@@ -153,5 +153,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.1.0...HEAD
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0
