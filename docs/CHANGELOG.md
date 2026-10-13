@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `default_timezone` is validated against `DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC)`: a typo now fails at container build time instead of throwing on the first `format()` call. `null` and `''` still mean the PHP default timezone.
+
+### Changed
+
+- `symfony/framework-bundle` and `symfony/yaml` moved from `require-dev` to `require`. The formatter depends on the `@translator` service and FrameworkBundle loads the bundle catalogues; the extension and the catalogues are YAML. Previously an app without FrameworkBundle failed at container compile time with a missing `translator` service.
+
 ## [1.0.9] - 2026-10-13
 
 ### Changed

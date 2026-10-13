@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `symfony/framework-bundle` and `symfony/yaml` are now hard requirements (they were already needed at runtime). Standard Symfony apps are unaffected.
+- `default_timezone` must be a valid timezone identifier (e.g. `Europe/Madrid`, `UTC`); invalid values now fail at container build time.
+
 ## To 1.0.9
 
 From **1.0.8** — dependency refresh and repository maintenance.

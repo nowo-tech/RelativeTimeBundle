@@ -6,6 +6,7 @@ namespace Nowo\RelativeTimeBundle\Tests\Unit\DependencyInjection;
 
 use Nowo\RelativeTimeBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
@@ -41,5 +42,35 @@ final class ConfigurationTest extends TestCase
         self::assertSame('App', $config['translation_domain']);
         self::assertSame('es', $config['default_locale']);
         self::assertSame('Europe/Madrid', $config['default_timezone']);
+    }
+
+    public function testDefaultTimezoneAcceptsLegacyIdentifiersAndEmptyString(): void
+    {
+        $processor = new Processor();
+
+        self::assertSame('UTC', $processor->processConfiguration(new Configuration(), [['default_timezone' => 'UTC']])['default_timezone']);
+        self::assertSame('Europe/Kiev', $processor->processConfiguration(new Configuration(), [['default_timezone' => 'Europe/Kiev']])['default_timezone']);
+        self::assertSame('', $processor->processConfiguration(new Configuration(), [['default_timezone' => '']])['default_timezone']);
+    }
+
+    /**
+     * @return iterable<string, array{mixed}>
+     */
+    public static function invalidTimezoneProvider(): iterable
+    {
+        yield 'unknown identifier' => ['Mars/Olympus'];
+        yield 'typo' => ['Europe/Madird'];
+        yield 'non-string' => [123];
+    }
+
+    /**
+     * @dataProvider invalidTimezoneProvider
+     */
+    public function testInvalidDefaultTimezoneIsRejected(mixed $timezone): void
+    {
+        $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage('default_timezone must be a valid timezone identifier');
+
+        (new Processor())->processConfiguration(new Configuration(), [['default_timezone' => $timezone]]);
     }
 }

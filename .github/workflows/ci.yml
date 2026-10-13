@@ -65,6 +65,7 @@ jobs:
           composer require \
             symfony/config:^${{ matrix.symfony }} \
             symfony/dependency-injection:^${{ matrix.symfony }} \
+            symfony/framework-bundle:^${{ matrix.symfony }} \
             symfony/http-kernel:^${{ matrix.symfony }} \
             symfony/translation:^${{ matrix.symfony }} \
             symfony/yaml:^${{ matrix.symfony }} \

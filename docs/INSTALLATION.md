@@ -26,7 +26,7 @@ nowo_relative_time:
     # default_timezone: Europe/Madrid
 ```
 
-Ensure the Translator component is enabled (`symfony/translation` + `framework.translator`).
+The bundle requires `symfony/framework-bundle`: the formatter uses the `translator` service, and FrameworkBundle is what loads the bundle catalogues. Ensure the translator is enabled (`framework.translator`, on by default in Flex apps).
 
 ## Translation overrides (REQ-I18N-001)
 

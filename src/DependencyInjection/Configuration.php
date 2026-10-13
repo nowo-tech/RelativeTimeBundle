@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Nowo\RelativeTimeBundle\DependencyInjection;
 
+use DateTimeZone;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+
+use function in_array;
+use function is_string;
 
 /**
  * Defines the configuration tree for the Relative Time Bundle (nowo_relative_time).
@@ -45,8 +49,12 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                 ->end()
                 ->scalarNode('default_timezone')
-                    ->info('Optional timezone for parsing date strings; null uses PHP default timezone')
+                    ->info('Optional timezone identifier (e.g. Europe/Madrid) for parsing date strings; null uses PHP default timezone')
                     ->defaultNull()
+                    ->validate()
+                        ->ifTrue(static fn (mixed $value): bool => $value !== null && $value !== '' && (!is_string($value) || !in_array($value, DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC), true)))
+                        ->thenInvalid('default_timezone must be a valid timezone identifier (see DateTimeZone::listIdentifiers()), got %s.')
+                    ->end()
                 ->end()
             ->end();
 
