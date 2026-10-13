@@ -8,7 +8,7 @@ Root key: `nowo_relative_time`.
 | `max_unit` | enum | `year` | Largest unit: `year`, `month`, `week`, `day`, `hour`, `minute`, `second` |
 | `translation_domain` | string | `NowoRelativeTimeBundle` | Symfony translation domain |
 | `default_locale` | string\|null | `null` | Locale when none is passed to `format()`; otherwise translator locale |
-| `default_timezone` | string\|null | `null` | Timezone identifier used when parsing date strings; validated against `DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC)` (invalid values fail at container compile time) |
+| `default_timezone` | string\|null | `null` | Timezone used when parsing date strings: any value `new \DateTimeZone()` accepts (identifier such as `Europe/Madrid`, offset such as `+02:00`, abbreviation such as `CEST`). Values PHP rejects fail at container compile time; `null` or `''` use the PHP default timezone |
 
 Under FrankenPHP worker with `FRANKENPHP_RESET_KERNEL=false`, prefer setting `default_timezone` explicitly so parsing does not depend on process-level `date.timezone`. See [FRANKENPHP-WORKER-AUDIT.md](FRANKENPHP-WORKER-AUDIT.md).
 

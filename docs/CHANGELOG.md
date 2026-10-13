@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `default_timezone` validation (added in 1.1.0) only accepted `DateTimeZone::listIdentifiers()` names and rejected values PHP accepts and that worked before 1.1.0, such as UTC offsets (`+02:00`) and abbreviations (`CEST`). It now validates by constructing `new \DateTimeZone($value)`, so only what PHP itself rejects fails at container build time. `null` and `''` still mean the PHP default timezone.
+
 ## [1.1.0] - 2026-10-13
 
 ### Fixed

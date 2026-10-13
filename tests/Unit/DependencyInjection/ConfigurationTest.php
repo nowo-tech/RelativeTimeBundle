@@ -54,12 +54,39 @@ final class ConfigurationTest extends TestCase
     }
 
     /**
+     * Values PHP's DateTimeZone accepts that are not in listIdentifiers() worked before 1.1.0 and must keep working.
+     *
+     * @return iterable<string, array{string}>
+     */
+    public static function phpAcceptedTimezoneProvider(): iterable
+    {
+        yield 'positive offset' => ['+02:00'];
+        yield 'negative offset' => ['-05:30'];
+        yield 'abbreviation' => ['CEST'];
+        yield 'legacy identifier' => ['Europe/Kiev'];
+        yield 'utc' => ['UTC'];
+        yield 'empty string' => [''];
+    }
+
+    /**
+     * @dataProvider phpAcceptedTimezoneProvider
+     */
+    public function testDefaultTimezoneAcceptsEverythingDateTimeZoneAccepts(string $timezone): void
+    {
+        $config = (new Processor())->processConfiguration(new Configuration(), [['default_timezone' => $timezone]]);
+
+        self::assertSame($timezone, $config['default_timezone']);
+    }
+
+    /**
      * @return iterable<string, array{mixed}>
      */
     public static function invalidTimezoneProvider(): iterable
     {
         yield 'unknown identifier' => ['Mars/Olympus'];
         yield 'typo' => ['Europe/Madird'];
+        yield 'garbage' => ['not a timezone!'];
+        yield 'bad offset' => ['+99:99:99x'];
         yield 'non-string' => [123];
     }
 
@@ -69,7 +96,7 @@ final class ConfigurationTest extends TestCase
     public function testInvalidDefaultTimezoneIsRejected(mixed $timezone): void
     {
         $this->expectException(InvalidConfigurationException::class);
-        $this->expectExceptionMessage('default_timezone must be a valid timezone identifier');
+        $this->expectExceptionMessage('default_timezone must be a timezone accepted by DateTimeZone');
 
         (new Processor())->processConfiguration(new Configuration(), [['default_timezone' => $timezone]]);
     }

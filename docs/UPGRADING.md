@@ -20,6 +20,8 @@
 
 ## Unreleased
 
+- `default_timezone` again accepts every value `new \DateTimeZone()` accepts (identifiers, offsets such as `+02:00`, abbreviations such as `CEST`). If 1.1.0 rejected your value, it works again without changes; the error message for invalid values changed.
+
 ## To 1.1.0
 
 From **1.0.9** — framework-bundle required for the translator; default_timezone validated.

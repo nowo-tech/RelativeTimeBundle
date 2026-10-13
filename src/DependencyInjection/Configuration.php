@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Nowo\RelativeTimeBundle\DependencyInjection;
 
 use DateTimeZone;
+use Exception;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use function in_array;
 use function is_string;
 
 /**
@@ -49,15 +49,34 @@ class Configuration implements ConfigurationInterface
                     ->defaultNull()
                 ->end()
                 ->scalarNode('default_timezone')
-                    ->info('Optional timezone identifier (e.g. Europe/Madrid) for parsing date strings; null uses PHP default timezone')
+                    ->info('Optional timezone (e.g. Europe/Madrid, UTC, +02:00, CEST) for parsing date strings; any value accepted by new \\DateTimeZone(); null or empty uses PHP default timezone')
                     ->defaultNull()
                     ->validate()
-                        ->ifTrue(static fn (mixed $value): bool => $value !== null && $value !== '' && (!is_string($value) || !in_array($value, DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC), true)))
-                        ->thenInvalid('default_timezone must be a valid timezone identifier (see DateTimeZone::listIdentifiers()), got %s.')
+                        ->ifTrue(static fn (mixed $value): bool => $value !== null && $value !== '' && !self::isValidTimezone($value))
+                        ->thenInvalid('default_timezone must be a timezone accepted by DateTimeZone (identifier, offset such as +02:00, or abbreviation), got %s.')
                     ->end()
                 ->end()
             ->end();
 
         return $treeBuilder;
+    }
+
+    /**
+     * Accepts exactly what the formatter can use: any string that new DateTimeZone() accepts
+     * (identifiers incl. backward-compatible ones, UTC offsets, abbreviations).
+     */
+    private static function isValidTimezone(mixed $value): bool
+    {
+        if (!is_string($value)) {
+            return false;
+        }
+
+        try {
+            new DateTimeZone($value);
+        } catch (Exception) {
+            return false;
+        }
+
+        return true;
     }
 }
