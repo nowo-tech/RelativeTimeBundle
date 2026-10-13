@@ -747,7 +747,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     max_unit?: "year"|"month"|"week"|"day"|"hour"|"minute"|"second"|Param, // Largest unit used when formatting (year, month, week, day, hour, minute, second) // Default: "year"
  *     translation_domain?: scalar|Param|null, // Symfony translation domain for relative time catalogues // Default: "NowoRelativeTimeBundle"
  *     default_locale?: scalar|Param|null, // Optional default locale; null uses the translator/request locale // Default: null
- *     default_timezone?: scalar|Param|null, // Optional timezone for parsing date strings; null uses PHP default timezone // Default: null
+ *     default_timezone?: scalar|Param|null, // Optional timezone (e.g. Europe/Madrid, UTC, +02:00, CEST) for parsing date strings; any value accepted by new \DateTimeZone(); null or empty uses PHP default timezone // Default: null
  * }
  * @psalm-type NowoHotReloadConfig = array{
  *     enabled?: bool|Param, // Master switch. When false, nothing is injected even if FRANKENPHP_HOT_RELOAD is set. // Default: true
