@@ -16,3 +16,7 @@
 
 - Run / expect `make test`, `make validate-translations`, and static analysis before release.
 - Add tests for new units, locales, or config options; maintain coverage targets from CI and README.
+
+## Commits
+
+- Never add AI co-author trailers: no `Co-authored-by: Cursor` / `cursoragent@cursor.com`, no `Co-Authored-By: Claude …` / `noreply@anthropic.com` (REQ-GIT-001).
