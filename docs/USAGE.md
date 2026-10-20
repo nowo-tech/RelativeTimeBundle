@@ -1,5 +1,12 @@
 # Usage
 
+## Table of contents
+
+- [Service](#service)
+- [Twig](#twig)
+- [Units](#units)
+- [Translation keys](#translation-keys)
+
 ## Service
 
 ```php

@@ -1,5 +1,12 @@
 # Installation
 
+## Table of contents
+
+- [Composer](#composer)
+- [Configuration](#configuration)
+- [Translation overrides (REQ-I18N-001)](#translation-overrides-req-i18n-001)
+- [Next steps](#next-steps)
+
 ## Composer
 
 ```bash

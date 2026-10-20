@@ -1,5 +1,12 @@
 # Security
 
+## Table of contents
+
+- [Scope](#scope)
+- [Threat model](#threat-model)
+- [Release security checklist (12.4.1)](#release-security-checklist-1241)
+- [AI security audit (REQ-SEC-004)](#ai-security-audit-req-sec-004)
+
 ## Scope
 
 This bundle formats dates as human-readable relative strings. It does not persist data, expose HTTP endpoints, or handle authentication.

@@ -9,6 +9,16 @@
 | Method | Manual review of every file under `src/` (formatter service, Twig extension, DI extension, configuration, `Resources/config/services.yaml`, translation catalogues) + PHPStan classic + worker-strict |
 | **Verdict** | ✅ **100% compatible** under Scenario B (`reset_kernel: false`) — no remediations required for sticky Kernel |
 
+## Table of contents
+
+- [Execution model assumed](#execution-model-assumed)
+- [Summary](#summary)
+- [Services reviewed](#services-reviewed)
+- [Findings](#findings)
+  - [W-01 — Locale and timezone fall back to process-level values (Info)](#w-01--locale-and-timezone-fall-back-to-process-level-values-info)
+- [Usage recommendations in worker mode](#usage-recommendations-in-worker-mode)
+- [Re-audit triggers](#re-audit-triggers)
+
 ## Execution model assumed
 
 FrankenPHP worker mode boots the Symfony kernel once per worker and serves many requests with the same container. This audit assumes the **strict** host contract used by Nowo “Friendly Worker” / kernel-isolation E2E:

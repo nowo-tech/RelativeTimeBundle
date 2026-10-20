@@ -8,7 +8,7 @@
 - [Bundle functional scope](#bundle-functional-scope)
 - [Public API (Packagist contract)](#public-api-packagist-contract)
 - [Validating the functional spec](#validating-the-functional-spec)
-- [Requirement identifiers (Makefile / demos)](#requirement-identifiers-makefile-demos)
+- [Requirement identifiers (Makefile / demos)](#requirement-identifiers-makefile--demos)
 - [Contributor workflow](#contributor-workflow)
 - [Relationship with Engram](#relationship-with-engram)
 - [GitHub Spec Kit](#github-spec-kit)
