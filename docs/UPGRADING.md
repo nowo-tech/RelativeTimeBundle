@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [To 1.2.0](#to-120)
 - [To 1.1.1](#to-111)
 - [To 1.1.0](#to-110)
 - [To 1.0.9](#to-109)
@@ -20,6 +21,14 @@
   - [Integrator checklist](#integrator-checklist)
 
 ## Unreleased
+
+## To 1.2.0
+
+From **1.1.1**:
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
 
 ## To 1.1.1
 

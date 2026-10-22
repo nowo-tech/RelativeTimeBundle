@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.2.0] - 2026-10-22](#120---2026-10-22)
 - [[1.1.1] - 2026-10-13](#111---2026-10-13)
 - [[1.1.0] - 2026-10-13](#110---2026-10-13)
 - [[1.0.9] - 2026-10-13](#109---2026-10-13)
@@ -22,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [[1.0.0] - 2026-07-18](#100---2026-07-18)
 
 ## [Unreleased]
+
+## [1.2.0] - 2026-10-22
+
+PSR-20 clock for the default reference time, CI PHPStan and coverage gates, release-check chain, dependency refresh. See [UPGRADING](UPGRADING.md#to-120).
 
 ### Added
 
@@ -43,6 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Dependencies refreshed (Composer and pnpm/npm lock files of the bundle and its demos, campaign 2026-10-19).
 - `.php-cs-fixer.dist.php`: `new ParallelConfig(2)` (REQ-CS-001).
 - Documentation: wave-1 REQ compliance — README documentation list order (PSR under Additional documentation) and canonical FrankenPHP claim line, CONTRIBUTING Cursor Agent settings and post-release-commit trailer check, canonical bug-report template, doc TOCs.
+
+[1.2.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.2.0
 
 ## [1.1.1] - 2026-10-13
 
@@ -183,5 +190,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.2.0...HEAD
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0
