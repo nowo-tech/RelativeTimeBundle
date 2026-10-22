@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Nowo\RelativeTimeBundle\Tests\Unit\DependencyInjection;
 
 use Nowo\RelativeTimeBundle\DependencyInjection\Configuration;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 
-/**
- * @covers \Nowo\RelativeTimeBundle\DependencyInjection\Configuration
- */
+#[CoversClass(Configuration::class)]
 final class ConfigurationTest extends TestCase
 {
     public function testDefaultConfiguration(): void
@@ -68,9 +68,7 @@ final class ConfigurationTest extends TestCase
         yield 'empty string' => [''];
     }
 
-    /**
-     * @dataProvider phpAcceptedTimezoneProvider
-     */
+    #[DataProvider('phpAcceptedTimezoneProvider')]
     public function testDefaultTimezoneAcceptsEverythingDateTimeZoneAccepts(string $timezone): void
     {
         $config = (new Processor())->processConfiguration(new Configuration(), [['default_timezone' => $timezone]]);
@@ -90,9 +88,7 @@ final class ConfigurationTest extends TestCase
         yield 'non-string' => [123];
     }
 
-    /**
-     * @dataProvider invalidTimezoneProvider
-     */
+    #[DataProvider('invalidTimezoneProvider')]
     public function testInvalidDefaultTimezoneIsRejected(mixed $timezone): void
     {
         $this->expectException(InvalidConfigurationException::class);

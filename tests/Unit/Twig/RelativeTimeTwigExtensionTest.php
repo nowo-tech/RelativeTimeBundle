@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
 use Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\TwigFilter;
@@ -15,9 +16,7 @@ use Twig\TwigFunction;
 
 use function sprintf;
 
-/**
- * @covers \Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension
- */
+#[CoversClass(RelativeTimeTwigExtension::class)]
 final class RelativeTimeTwigExtensionTest extends TestCase
 {
     private function createExtension(): RelativeTimeTwigExtension

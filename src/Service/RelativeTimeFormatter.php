@@ -9,6 +9,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use Exception;
 use InvalidArgumentException;
+use Psr\Clock\ClockInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function is_float;
@@ -47,6 +48,7 @@ final class RelativeTimeFormatter
      * @param string $maxUnit Largest unit considered (year|month|week|day|hour|minute|second)
      * @param string|null $defaultLocale Fallback locale when none is passed to format()
      * @param string|null $defaultTimezone Timezone used when parsing naive date strings (null = PHP default)
+     * @param ClockInterface|null $clock Source of "now" when format() gets no reference (REQ-DI-001); system time when null
      */
     public function __construct(
         private readonly TranslatorInterface $translator,
@@ -55,6 +57,7 @@ final class RelativeTimeFormatter
         private readonly string $maxUnit = 'year',
         private readonly ?string $defaultLocale = null,
         private readonly ?string $defaultTimezone = null,
+        private readonly ?ClockInterface $clock = null,
     ) {
     }
 
@@ -77,7 +80,7 @@ final class RelativeTimeFormatter
         }
 
         $target         = $this->normalizeDate($date);
-        $reference      = $this->normalizeDate($now ?? 'now');
+        $reference      = $this->normalizeDate($now ?? $this->clock?->now() ?? 'now');
         $diffSeconds    = $target->getTimestamp() - $reference->getTimestamp();
         $absSeconds     = abs($diffSeconds);
         $resolvedLocale = $locale ?? $this->defaultLocale ?? $this->translator->getLocale();

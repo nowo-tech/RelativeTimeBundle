@@ -6,11 +6,10 @@ namespace Nowo\RelativeTimeBundle\Tests\Unit;
 
 use Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension;
 use Nowo\RelativeTimeBundle\NowoRelativeTimeBundle;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Nowo\RelativeTimeBundle\NowoRelativeTimeBundle
- */
+#[CoversClass(NowoRelativeTimeBundle::class)]
 final class NowoRelativeTimeBundleTest extends TestCase
 {
     public function testGetContainerExtension(): void

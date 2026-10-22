@@ -23,6 +23,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `RelativeTimeFormatter` accepts an optional `Psr\Clock\ClockInterface` (wired to the `clock` service when available) as the default "now"; `psr/clock` is required (REQ-DI-001 / REQ-CS-007).
+
+### Changed
+
+- `release-check` runs sequentially from `ensure-up`, adds `check-open-prs` and a failing 100% `coverage-check` (REQ-MAKE-002 / REQ-TEST-003); new `demo-smoke` target and workflow (REQ-TEST-011).
+- CI: new `phpstan` job and a 100% line-coverage gate in the coverage cell (REQ-CS-006 / REQ-TEST-003).
+- Rector targets PHP 8.2 (REQ-CS-003); tests use `#[CoversClass]` / `#[DataProvider]` (REQ-TEST-010); the Twig extension relies on autoconfigure (REQ-SF-003).
+- Demo healthcheck falls back to the `.env.example` port (8008) and follows redirects.
+
+### Fixed
+
+- `.scripts/check-no-cursor-coauthor.sh` also runs inside git worktrees (`.git` file instead of directory).
+
 ### Changed
 
 - Dependencies refreshed (Composer and pnpm/npm lock files of the bundle and its demos, campaign 2026-10-19).

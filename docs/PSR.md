@@ -23,14 +23,14 @@ Others are **N/A** (or already covered by Symfony) so the decision stays auditab
 
 | PSR | Decision | Notes |
 | --- | -------- | ----- |
-| PSR-3 Logger | **N/A** | Logging calls exist but there is no public/injectable logger SPI yet; do not add `psr/log` without type-hints. |
+| PSR-3 Logger | **N/A** | The formatter and Twig extension are pure functions of their input: no warning or error path to log. |
 | PSR-6 / PSR-16 Cache | **N/A** | No package-owned cache layer. |
 | PSR-7 / PSR-17 HTTP messages | **N/A** | Symfony HttpFoundation (or no HTTP messages API) is the correct surface; a PSR-7 bridge would not help consumers. |
 | PSR-18 HTTP client | **N/A** | No outbound HTTP client. |
 | PSR-11 Container | **N/A** | No container locator in the public API; constructor injection only. |
 | PSR-14 Event dispatcher | **N/A** | No domain event extension points that need a dispatcher SPI. |
 | PSR-15 HTTP middleware | **N/A** | Uses Symfony kernel listeners/subscribers (or has no HTTP middleware pipeline). |
-| PSR-20 Clock | **N/A** | Uses `DateTimeImmutable` / system time internally; no injectable clock SPI yet. Re-evaluate if tests need time freezing at the boundary. |
+| PSR-20 Clock | **Adopted** | `RelativeTimeFormatter` takes an optional `Psr\Clock\ClockInterface` (the `clock` service when available) as the default reference "now"; an explicit `$now` argument still wins. `psr/clock` in `require`. |
 
 ## Summary
 

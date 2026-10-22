@@ -7,12 +7,11 @@ namespace Nowo\RelativeTimeBundle\Tests\Unit\DependencyInjection;
 use Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension;
 use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
 use Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-/**
- * @covers \Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension
- */
+#[CoversClass(NowoRelativeTimeExtension::class)]
 final class NowoRelativeTimeExtensionTest extends TestCase
 {
     public function testLoadRegistersServicesAndParameters(): void

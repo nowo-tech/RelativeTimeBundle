@@ -7,7 +7,7 @@ COMPOSE_BIN := $(shell docker compose version >/dev/null 2>&1 && echo "docker co
 COMPOSE     := $(COMPOSE_BIN) -f $(COMPOSE_FILE)
 SERVICE_PHP := php
 
-.PHONY: help up down build shell install test test-coverage coverage-php-percent cs-check cs-fix qa clean release-check release-check-demos composer-sync rector rector-dry phpstan igor update validate validate-translations setup-hooks check-no-cursor-coauthor strip-cursor-coauthor-from-history
+.PHONY: help up down build shell install test test-coverage coverage-php-percent cs-check cs-fix qa clean release-check release-check-demos composer-sync rector rector-dry phpstan igor update validate validate-translations setup-hooks check-no-cursor-coauthor strip-cursor-coauthor-from-history coverage-check demo-smoke check-open-prs
 
 help:
 	@echo "Relative Time Bundle - Development Commands"
@@ -75,8 +75,17 @@ test: ensure-up
 	$(COMPOSE) exec $(SERVICE_PHP) composer test
 
 test-coverage: ensure-up
-	$(COMPOSE) exec $(SERVICE_PHP) composer test-coverage | tee coverage-php.txt
+	$(COMPOSE) exec -T $(SERVICE_PHP) composer test-coverage | tee coverage-php.txt
 	./.scripts/php-coverage-percent.sh coverage-php.txt
+
+# REQ-TEST-003: fail below 100% PHP line coverage.
+coverage-check: test-coverage
+	@pct=$$(sed 's/\x1B\[[0-9;]*[A-Za-z]//g' coverage-php.txt | awk '/^[[:space:]]*Lines:[[:space:]]+/ { gsub(/%/, "", $$2); print $$2; exit }'); \
+	awk -v p="$$pct" 'BEGIN { if (p+0 < 100) { printf "ERROR: PHP Lines coverage %s%% < 100%%\n", p; exit 1 } printf "Coverage check OK: %s%%\n", p }'
+
+# REQ-TEST-011: boot the demo and require HTTP 200.
+demo-smoke:
+	@$(MAKE) -C demo release-verify
 
 cs-check: ensure-up
 	$(COMPOSE) exec -T $(SERVICE_PHP) composer cs-check
@@ -109,7 +118,25 @@ validate-translations: ensure-up
 # Run Igor worker-state audit (REQ-CS-008)
 igor: ensure-up
 	$(COMPOSE) exec -T php composer igor
-release-check: check-no-cursor-coauthor ensure-up composer-sync cs-fix cs-check rector-dry phpstan igor test-coverage validate-translations release-check-demos
+# REQ-MAKE-002: sequential chain, ensure-up first (no form-submitting Twig: raw-form gate N/A).
+release-check:
+	@$(MAKE) ensure-up
+	@$(MAKE) check-no-cursor-coauthor
+	@$(MAKE) check-open-prs
+	@$(MAKE) composer-sync
+	@$(MAKE) cs-fix
+	@$(MAKE) cs-check
+	@$(MAKE) rector-dry
+	@$(MAKE) phpstan
+	@$(MAKE) igor
+	@$(MAKE) validate-translations
+	@$(MAKE) coverage-check
+	@$(MAKE) release-check-demos
+
+# REQ-REL-003: fail on unresolved open pull requests.
+check-open-prs:
+	@chmod +x .scripts/check-open-prs.sh
+	@GH_REPO=nowo-tech/RelativeTimeBundle ./.scripts/check-open-prs.sh
 
 release-check-demos:
 	@$(MAKE) -C demo release-check

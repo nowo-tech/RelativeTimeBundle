@@ -72,9 +72,9 @@ update-bundle: ensure-up
 
 verify:
 	@if [ ! -f .env ]; then cp .env.example .env 2>/dev/null || true; fi
-	@port=$$(grep '^PORT=' .env 2>/dev/null | cut -d= -f2 | tr -d '\r'); [ -z "$$port" ] && port=8001; \
+	@port=$$(grep '^PORT=' .env 2>/dev/null | cut -d= -f2 | tr -d '\r'); [ -z "$$port" ] && port=$$(grep '^PORT=' .env.example 2>/dev/null | cut -d= -f2 | tr -d '\r'); [ -z "$$port" ] && port=8008; \
 	$(COMPOSE) up -d 2>/dev/null; sleep 8; \
-	code=$$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:$$port 2>/dev/null || echo "000"); \
+	code=$$(curl -sL -o /dev/null -w "%{http_code}" http://127.0.0.1:$$port/ 2>/dev/null || echo "000"); \
 	if [ "$$code" = "200" ]; then echo "OK (HTTP $$code)"; else echo "Failed (HTTP $$code)"; exit 1; fi
 
 release-check: ensure-up update-bundle test test-coverage

@@ -13,10 +13,10 @@ services:
       $maxUnit: '%nowo_relative_time.max_unit%'
       $defaultLocale: '%nowo_relative_time.default_locale%'
       $defaultTimezone: '%nowo_relative_time.default_timezone%'
+      $clock: '@?Psr\Clock\ClockInterface'
 
   Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension:
     class: Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension
     arguments:
       $formatter: '@Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter'
-    tags:
-      - { name: twig.extension }
+    # Tagged twig.extension by autoconfigure (REQ-SF-003).

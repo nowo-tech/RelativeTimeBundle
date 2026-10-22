@@ -8,15 +8,16 @@ use DateTimeImmutable;
 use DateTimeZone;
 use InvalidArgumentException;
 use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Clock\ClockInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function sprintf;
 
-/**
- * @covers \Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter
- */
+#[CoversClass(RelativeTimeFormatter::class)]
 final class RelativeTimeFormatterTest extends TestCase
 {
     private TranslatorInterface&MockObject $translator;
@@ -60,9 +61,7 @@ final class RelativeTimeFormatterTest extends TestCase
         self::assertSame('hace un momento', $this->formatter->format($date, 'es', $this->now));
     }
 
-    /**
-     * @dataProvider provideUnitCases
-     */
+    #[DataProvider('provideUnitCases')]
     public function testUnitSelection(string $modify, string $expectedKey, int $expectedCount): void
     {
         $date   = $this->now->modify($modify);
@@ -160,5 +159,25 @@ final class RelativeTimeFormatterTest extends TestCase
         $otherNow = $this->now->modify('+1 hour');
         self::assertSame('en:relative_time.ago.hour:1', $this->formatter->format($this->now, 'en', $otherNow));
         self::assertSame('en:relative_time.ago.minute:5', $this->formatter->format($date, 'en', $this->now));
+    }
+
+    /**
+     * REQ-DI-001: without an explicit reference, "now" comes from the injected PSR-20 clock.
+     */
+    public function testInjectedClockProvidesTheDefaultReferenceTime(): void
+    {
+        $clock = new class($this->now) implements ClockInterface {
+            public function __construct(private readonly DateTimeImmutable $now)
+            {
+            }
+
+            public function now(): DateTimeImmutable
+            {
+                return $this->now;
+            }
+        };
+        $formatter = new RelativeTimeFormatter($this->translator, 'NowoRelativeTimeBundle', 10, 'year', null, 'UTC', $clock);
+
+        self::assertSame('en:relative_time.ago.minute:5', $formatter->format($this->now->modify('-5 minutes'), 'en'));
     }
 }

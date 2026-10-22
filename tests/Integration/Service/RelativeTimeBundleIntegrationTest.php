@@ -9,6 +9,7 @@ use DateTimeZone;
 use Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension;
 use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
 use Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,11 +22,10 @@ use function dirname;
 
 /**
  * Integration tests: bundle loaded into a real container with a Translator.
- *
- * @covers \Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension
- * @covers \Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter
- * @covers \Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension
  */
+#[CoversClass(NowoRelativeTimeExtension::class)]
+#[CoversClass(RelativeTimeFormatter::class)]
+#[CoversClass(RelativeTimeTwigExtension::class)]
 final class RelativeTimeBundleIntegrationTest extends TestCase
 {
     /**

@@ -83,7 +83,36 @@ jobs:
 
       - name: Run tests with coverage (PHP 8.2 + Symfony 7.4 only)
         if: matrix.php == '8.2' && matrix.symfony == '7.4'
-        run: composer test-coverage
+        run: |
+          set -o pipefail
+          composer test-coverage | tee coverage-php.txt
+          ./.scripts/php-coverage-percent.sh coverage-php.txt
+
+      - name: Enforce 100% PHP line coverage (REQ-TEST-003)
+        if: matrix.php == '8.2' && matrix.symfony == '7.4'
+        run: |
+          pct=$(sed 's/\x1B\[[0-9;]*[A-Za-z]//g' coverage-php.txt | awk '/^[[:space:]]*Lines:[[:space:]]+/ { gsub(/%/, "", $2); print $2; exit }')
+          awk -v p="$pct" 'BEGIN { if (p+0 < 100) { printf "PHP Lines coverage %s%% < 100%%\n", p; exit 1 } printf "PHP Lines coverage %s%%\n", p }'
+
+  phpstan:
+    name: PHPStan (REQ-CS-006)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Run PHPStan (fails on any finding)
+        run: composer phpstan
 
   cs-check:
     name: Code Style Check
