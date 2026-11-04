@@ -63,7 +63,13 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Accepts exactly what the formatter can use: any string that new DateTimeZone() accepts
-     * (identifiers incl. backward-compatible ones, UTC offsets, abbreviations).
+     * (identifiers, UTC offsets, abbreviations).
+     *
+     * Backward-compatible aliases (e.g. Europe/Kiev for Europe/Kyiv) are accepted only when the host's timezone
+     * database has them: PHP builds that use the system tzdata drop them unless tzdata-legacy is installed. This is
+     * deliberate. The formatter constructs new DateTimeZone() at runtime on the same host, so accepting an alias the
+     * host cannot construct (e.g. via DateTimeZone::listIdentifiers(ALL_WITH_BC)) would only move the failure from
+     * container build time to the first format() call. Use canonical identifiers (Europe/Kyiv).
      */
     private static function isValidTimezone(mixed $value): bool
     {

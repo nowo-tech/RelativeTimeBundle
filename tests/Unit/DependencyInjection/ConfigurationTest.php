@@ -44,13 +44,31 @@ final class ConfigurationTest extends TestCase
         self::assertSame('Europe/Madrid', $config['default_timezone']);
     }
 
-    public function testDefaultTimezoneAcceptsLegacyIdentifiersAndEmptyString(): void
+    public function testDefaultTimezoneAcceptsIdentifiersAndEmptyString(): void
     {
         $processor = new Processor();
 
         self::assertSame('UTC', $processor->processConfiguration(new Configuration(), [['default_timezone' => 'UTC']])['default_timezone']);
-        self::assertSame('Europe/Kiev', $processor->processConfiguration(new Configuration(), [['default_timezone' => 'Europe/Kiev']])['default_timezone']);
+        self::assertSame('Europe/Kyiv', $processor->processConfiguration(new Configuration(), [['default_timezone' => 'Europe/Kyiv']])['default_timezone']);
         self::assertSame('', $processor->processConfiguration(new Configuration(), [['default_timezone' => '']])['default_timezone']);
+    }
+
+    /**
+     * Legacy (backward-compatible) aliases such as Europe/Kiev exist only when the host's timezone database ships them:
+     * PHP builds that use the system tzdata (Debian/Ubuntu) drop them unless tzdata-legacy is installed (e.g. the
+     * ubuntu-26.04 runner image). Validation must agree with what the formatter can construct on the same host, so the
+     * alias is accepted exactly when new DateTimeZone() accepts it, whatever the host's tzdata.
+     */
+    public function testLegacyTimezoneAliasFollowsHostDateTimeZone(): void
+    {
+        // timezone_open() returns false (with a warning) where new DateTimeZone() throws.
+        if (@timezone_open('Europe/Kiev') === false) {
+            $this->expectException(InvalidConfigurationException::class);
+        }
+
+        $config = (new Processor())->processConfiguration(new Configuration(), [['default_timezone' => 'Europe/Kiev']]);
+
+        self::assertSame('Europe/Kiev', $config['default_timezone']);
     }
 
     /**
@@ -63,7 +81,7 @@ final class ConfigurationTest extends TestCase
         yield 'positive offset' => ['+02:00'];
         yield 'negative offset' => ['-05:30'];
         yield 'abbreviation' => ['CEST'];
-        yield 'legacy identifier' => ['Europe/Kiev'];
+        yield 'identifier' => ['Europe/Kyiv'];
         yield 'utc' => ['UTC'];
         yield 'empty string' => [''];
     }
