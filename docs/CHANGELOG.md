@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Demo uses the UiKit base style (REQ-DEMO-014)
 - Dependencies: Symfony security release 2026-11-04 (7.4.23 / 8.1.11) in the dev lock.
 - `default_timezone`: documented that backward-compatible aliases such as `Europe/Kiev` validate only where the host's timezone database ships them (PHP builds on system tzdata drop them without `tzdata-legacy`, e.g. the ubuntu-26.04 runner image). Validation still matches what the formatter can construct at runtime; use canonical identifiers such as `Europe/Kyiv`. Tests no longer assume the legacy alias exists.
 
