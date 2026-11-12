@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | Package | `nowo-tech/relative-time-bundle` (`symfony-bundle`) |
-| Audited revision | `v1.0.6` / working tree after this audit |
-| Audit date | 2026-09-25 |
+| Audited revision | `v1.2.0` (kept-alive test and rule-7 note added 2026-11-12; earlier manual review kept below) |
+| Audit date | 2026-11-12 (first audit 2026-09) |
 | Target runtime | FrankenPHP **worker** with **`FRANKENPHP_RESET_KERNEL=false`** (sticky Kernel / “Friendly Worker”) |
 | Method | Manual review of every file under `src/` (formatter service, Twig extension, DI extension, configuration, `Resources/config/services.yaml`, translation catalogues) + PHPStan classic + worker-strict |
 | **Verdict** | ✅ **100% compatible** under Scenario B (`reset_kernel: false`) — no remediations required for sticky Kernel |
@@ -16,6 +16,7 @@
 - [Services reviewed](#services-reviewed)
 - [Findings](#findings)
   - [W-01 — Locale and timezone fall back to process-level values (Info)](#w-01--locale-and-timezone-fall-back-to-process-level-values-info)
+- [Kept-alive test (REQ-RUNTIME-002)](#kept-alive-test-req-runtime-002)
 - [Usage recommendations in worker mode](#usage-recommendations-in-worker-mode)
 - [Re-audit triggers](#re-audit-triggers)
 
@@ -75,6 +76,19 @@ No open findings that block Scenario B.
 - **Recommendation:** set `default_timezone` explicitly in `nowo_relative_time` config for deterministic output, and pass the locale explicitly (`|relative_time(app.request.locale)`) when rendering outside a normal HTTP request (e.g. emails from a Messenger worker).
 
 Every result depends only on the arguments and on the current time, and "now" is created per call, so there is no stale "now" captured at boot. Unit regression: `RelativeTimeFormatterTest::testSharedInstanceDoesNotLeakLocaleAcrossConsecutiveCalls`.
+
+## Kept-alive test (REQ-RUNTIME-002)
+
+Test: `Nowo\RelativeTimeBundle\Tests\Integration\Worker\WorkerKeptAliveKernelTest` (`tests/Integration/Worker/WorkerKeptAliveKernelTest.php`). It uses one compiled container with the bundle extension and a real translator (never reset) plus one Twig environment, rendering the `relative_time` / `ago` filters and functions for two request contexts (English and Spanish, with the host request locale switched on the shared translator the way the locale listener does, and with an explicit locale argument). `services_resetter` / `kernel.reset` is **never** called. It runs 1,200 iterations alternating the two inputs, asserts every response carries its own language (no text of the other locale appears, an explicit locale wins over the locale the previous request left on the translator), and that memory growth after a 100-iteration warm-up stays below 4 MiB.
+
+| Service | State kept between requests | Reset mechanism |
+|---------|-----------------------------|-----------------|
+| `Service\RelativeTimeFormatter` | none (`readonly` configuration; the locale is a call argument or the translator locale read at call time) | none needed |
+| `Twig\RelativeTimeTwigExtension` | none | none needed |
+
+Result: no request data is carried between requests, so the bundle is **safe with kernel reset false**.
+
+Rule 7: the bundle never clears or resets the host's default EntityManager (it uses no persistence).
 
 ## Usage recommendations in worker mode
 
