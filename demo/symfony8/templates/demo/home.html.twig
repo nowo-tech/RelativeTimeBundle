@@ -4,12 +4,13 @@
 
 {% block body %}
     <h1>Relative Time Bundle – Demo</h1>
-    <p><span class="badge">{{ version_badge }}</span></p>
+    <p><span class="nowo-ui-badge nowo-ui-badge--neutral">{{ version_badge }}</span></p>
     <p>Reference now: <code>{{ now|date('Y-m-d H:i:s') }}</code></p>
 
-    <section>
-        <h2>Service + Twig filter (multi-locale)</h2>
-        <table>
+    <section class="nowo-ui-card">
+        <div class="nowo-ui-card__header"><h2 class="nowo-ui-card__title">Service + Twig filter (multi-locale)</h2></div>
+        <div class="nowo-ui-card__body">
+        <table class="nowo-ui-data-table">
             <thead>
                 <tr>
                     <th>Case</th>
@@ -35,11 +36,14 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
     </section>
 
-    <section>
-        <h2>Twig helpers</h2>
+    <section class="nowo-ui-card">
+        <div class="nowo-ui-card__header"><h2 class="nowo-ui-card__title">Twig helpers</h2></div>
+        <div class="nowo-ui-card__body">
         <p><code>ago</code> filter: {{ rows[2].iso|ago(null, now) }}</p>
         <p><code>relative_time()</code> function (es): {{ relative_time(rows[2].iso, 'es', now) }}</p>
+        </div>
     </section>
 {% endblock %}
