@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Tests
+
+- Tests: kept-alive worker test `WorkerKeptAliveKernelTest` (one kernel or one kept set of services, never reset, 1,200 alternating iterations, memory bound) and `docs/FRANKENPHP-WORKER-AUDIT.md` refreshed for v1.2.0; no runtime change.
+
 ### Changed
 
 - Dependencies: Symfony security release 2026-11-04 (7.4.23 / 8.1.11) in the dev lock.
