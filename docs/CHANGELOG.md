@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Table of contents
 
 - [[Unreleased]](#unreleased)
+- [[1.3.0] - 2026-11-13](#130---2026-11-13)
 - [[1.2.0] - 2026-10-22](#120---2026-10-22)
 - [[1.1.1] - 2026-10-13](#111---2026-10-13)
 - [[1.1.0] - 2026-10-13](#110---2026-10-13)
@@ -24,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-13
+
 ### Added
 
 - `Contract\RelativeTimeFormatterInterface` (`format()`, `ago()`), implemented by `RelativeTimeFormatter` and aliased in the container; the Twig extension type-hints it (REQ-ARCH-001 rule 1).
@@ -38,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Demo uses the UiKit base style (REQ-DEMO-014)
 - Dependencies: Symfony security release 2026-11-04 (7.4.23 / 8.1.11) in the dev lock.
 - `default_timezone`: documented that backward-compatible aliases such as `Europe/Kiev` validate only where the host's timezone database ships them (PHP builds on system tzdata drop them without `tzdata-legacy`, e.g. the ubuntu-26.04 runner image). Validation still matches what the formatter can construct at runtime; use canonical identifiers such as `Europe/Kyiv`. Tests no longer assume the legacy alias exists.
+
+[1.3.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.3.0
 
 ## [1.2.0] - 2026-10-22
 
@@ -205,5 +210,5 @@ PSR-20 clock for the default reference time, CI PHPStan and coverage gates, rele
 - **Configuration** (`nowo_relative_time`): `just_now_threshold_seconds`, `max_unit`, `translation_domain`, `default_locale`, `default_timezone`.
 - Symfony Flex recipe, demos for Symfony 7.4 and 8.1 (FrankenPHP), Spec Kit baseline, and Nowo maintainer tooling (CI, `make release-check`, `validate-translations`).
 
-[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/nowo-tech/RelativeTimeBundle/compare/v1.3.0...HEAD
 [1.0.0]: https://github.com/nowo-tech/RelativeTimeBundle/releases/tag/v1.0.0
