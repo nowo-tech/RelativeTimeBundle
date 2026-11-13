@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `Contract\RelativeTimeFormatterInterface` (`format()`, `ago()`), implemented by `RelativeTimeFormatter` and aliased in the container; the Twig extension type-hints it (REQ-ARCH-001 rule 1).
+- `docs/USAGE.md`: "Standard Symfony and DDD hosts" section.
+
 ### Tests
 
 - Tests: kept-alive worker test `WorkerKeptAliveKernelTest` (one kernel or one kept set of services, never reset, 1,200 alternating iterations, memory bound) and `docs/FRANKENPHP-WORKER-AUDIT.md` refreshed for v1.2.0; no runtime change.

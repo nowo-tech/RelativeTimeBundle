@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Unreleased](#unreleased)
+- [To 1.3.0](#to-130)
 - [To 1.2.0](#to-120)
 - [To 1.1.1](#to-111)
 - [To 1.1.0](#to-110)
@@ -21,6 +22,16 @@
   - [Integrator checklist](#integrator-checklist)
 
 ## Unreleased
+
+## To 1.3.0
+
+From **1.2.0**: minor, strictly additive, no configuration change.
+
+```bash
+composer update nowo-tech/relative-time-bundle
+```
+
+- New `Contract\RelativeTimeFormatterInterface`, aliased to `Service\RelativeTimeFormatter`. Type-hint the interface; a host can re-alias it. The class id and the Twig filters work as before.
 
 ## To 1.2.0
 
