@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Nowo\RelativeTimeBundle\Twig;
 
 use DateTimeInterface;
-use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
+use Nowo\RelativeTimeBundle\Contract\RelativeTimeFormatterInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -21,10 +21,10 @@ use Twig\TwigFunction;
 final class RelativeTimeTwigExtension extends AbstractExtension
 {
     /**
-     * @param RelativeTimeFormatter $formatter Bundle formatter service
+     * @param RelativeTimeFormatterInterface $formatter Bundle formatter service
      */
     public function __construct(
-        private readonly RelativeTimeFormatter $formatter,
+        private readonly RelativeTimeFormatterInterface $formatter,
     ) {
     }
 

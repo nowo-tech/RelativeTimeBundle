@@ -9,6 +9,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use Exception;
 use InvalidArgumentException;
+use Nowo\RelativeTimeBundle\Contract\RelativeTimeFormatterInterface;
 use Psr\Clock\ClockInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -25,7 +26,7 @@ use function sprintf;
  * @author Héctor Franco Aceituno <hectorfranco@nowo.tech>
  * @copyright 2026 Nowo.tech
  */
-final class RelativeTimeFormatter
+final class RelativeTimeFormatter implements RelativeTimeFormatterInterface
 {
     /** @var list<string> */
     private const UNITS = ['year', 'month', 'week', 'day', 'hour', 'minute', 'second'];

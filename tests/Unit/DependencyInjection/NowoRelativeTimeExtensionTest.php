@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Nowo\RelativeTimeBundle\Tests\Unit\DependencyInjection;
 
+use Nowo\RelativeTimeBundle\Contract\RelativeTimeFormatterInterface;
 use Nowo\RelativeTimeBundle\DependencyInjection\NowoRelativeTimeExtension;
 use Nowo\RelativeTimeBundle\Service\RelativeTimeFormatter;
 use Nowo\RelativeTimeBundle\Twig\RelativeTimeTwigExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use stdClass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 #[CoversClass(NowoRelativeTimeExtension::class)]
@@ -30,5 +33,21 @@ final class NowoRelativeTimeExtensionTest extends TestCase
         self::assertSame('week', $container->getParameter('nowo_relative_time.max_unit'));
         self::assertTrue($container->hasDefinition(RelativeTimeFormatter::class));
         self::assertTrue($container->hasDefinition(RelativeTimeTwigExtension::class));
+    }
+
+    public function testFormatterInterfaceIsAliasedAndHostCanOverrideIt(): void
+    {
+        $container = new ContainerBuilder();
+        $container->setParameter('kernel.environment', 'test');
+
+        (new NowoRelativeTimeExtension())->load([[]], $container);
+
+        self::assertTrue($container->hasAlias(RelativeTimeFormatterInterface::class));
+        self::assertSame(RelativeTimeFormatter::class, (string) $container->getAlias(RelativeTimeFormatterInterface::class));
+        self::assertInstanceOf(RelativeTimeFormatterInterface::class, (new ReflectionClass(RelativeTimeFormatter::class))->newInstanceWithoutConstructor());
+
+        $container->register('app.formatter', stdClass::class);
+        $container->setAlias(RelativeTimeFormatterInterface::class, 'app.formatter');
+        self::assertSame('app.formatter', (string) $container->getAlias(RelativeTimeFormatterInterface::class));
     }
 }
