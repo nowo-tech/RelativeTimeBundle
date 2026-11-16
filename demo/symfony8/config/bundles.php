@@ -6,7 +6,7 @@ return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class     => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class               => ['all' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\Bundle\DebugBundle\DebugBundle::class                 => ['dev' => true],
+    Symfony\Bundle\DebugBundle\DebugBundle::class             => ['dev' => true],
     Nowo\RelativeTimeBundle\NowoRelativeTimeBundle::class     => ['all' => true],
     Nowo\UiKitBundle\NowoUiKitBundle::class                   => ['all' => true],
     Nowo\HotReloadBundle\NowoHotReloadBundle::class           => ['dev' => true, 'test' => true],
