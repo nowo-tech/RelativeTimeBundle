@@ -25,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Spec Kit: `specs/001-baseline/code-inventory.md` maps `Contract/RelativeTimeFormatterInterface` (14/14 artifacts) (REQ-SPECKIT-001/003)
+- Demo: `symfony/debug-bundle` in the Symfony 8 demo dev stack (REQ-DEMO-001)
+
 ## [1.3.0] - 2026-11-13
 
 ### Added
