@@ -2,7 +2,7 @@
 
 **Baseline spec**: [`spec.md`](spec.md)  
 **Package**: `nowo-tech/relative-time-bundle`  
-**Last audited**: 2026-09-25
+**Last audited**: 2026-11-16
 
 This file proves that **every production source artifact** under `src/` is referenced by the baseline specification. PHPUnit under `tests/` is out of scope unless promoted in the spec.
 
@@ -13,6 +13,7 @@ This file proves that **every production source artifact** under `src/` is refer
 | `NowoRelativeTimeBundle.php` | Bundle entry | FR-BUNDLE-001 |
 | `DependencyInjection/Configuration.php` | Config tree | FR-CFG-001 |
 | `DependencyInjection/NowoRelativeTimeExtension.php` | DI extension + parameters | FR-CFG-002 |
+| `Contract/RelativeTimeFormatterInterface.php` | Formatter port (REQ-ARCH-001); type-hint target for hosts | FR-FMT-001 |
 | `Service/RelativeTimeFormatter.php` | Relative formatting engine; worker-safe (`readonly`) | FR-FMT-001, FR-FMT-002, FR-FMT-003, FR-WORKER-001 |
 | `Twig/RelativeTimeTwigExtension.php` | Twig API; worker-safe (`readonly`) | FR-TWIG-001, FR-WORKER-001 |
 
@@ -38,7 +39,7 @@ This file proves that **every production source artifact** under `src/` is refer
 
 | Category | Files | Mapped |
 | --- | ---: | ---: |
-| PHP classes | 5 | 5 |
+| PHP classes | 6 | 6 |
 | YAML config | 1 | 1 |
 | Translation catalogues | 7 | 7 |
-| **Total `src/` artifacts** | **13** | **13** |
+| **Total `src/` artifacts** | **14** | **14** |
