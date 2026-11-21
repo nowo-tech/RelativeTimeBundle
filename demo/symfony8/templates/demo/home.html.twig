@@ -2,48 +2,52 @@
 
 {% block title %}Relative Time Bundle - Demo - {{ version_badge }}{% endblock %}
 
+{% block nowo_ui_page_header %}
+    {{ include(nowo_ui_partial('page_header'), {
+        title: 'Relative Time Bundle – Demo',
+        intro: 'Reference now: ' ~ now|date('Y-m-d H:i:s'),
+    }) }}
+{% endblock %}
+
 {% block body %}
-    <h1>Relative Time Bundle – Demo</h1>
-    <p><span class="nowo-ui-badge nowo-ui-badge--neutral">{{ version_badge }}</span></p>
-    <p>Reference now: <code>{{ now|date('Y-m-d H:i:s') }}</code></p>
+    {% embed '@NowoUiKit/demo_platform/_section.html.twig' with {title: 'Service + Twig filter (multi-locale)', kind: 'table', testid: 'demo-table'} %}
+        {% block section_actions %}<span class="nowo-ui-badge nowo-ui-badge--neutral">{{ version_badge }}</span>{% endblock %}
+        {% block section_body %}
+            <table class="nowo-ui-data-table">
+                <thead>
+                    <tr>
+                        <th>Case</th>
+                        <th>ISO</th>
+                        <th>en</th>
+                        <th>es</th>
+                        <th>fr</th>
+                        <th>de</th>
+                        <th>Twig |relative_time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td>{{ row.label }}</td>
+                        <td><code class="nowo-ui-code">{{ row.iso }}</code></td>
+                        <td>{{ row.en }}</td>
+                        <td>{{ row.es }}</td>
+                        <td>{{ row.fr }}</td>
+                        <td>{{ row.de }}</td>
+                        <td>{{ row.iso|relative_time(null, now) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+    {% endembed %}
 
-    <section class="nowo-ui-card">
-        <div class="nowo-ui-card__header"><h2 class="nowo-ui-card__title">Service + Twig filter (multi-locale)</h2></div>
-        <div class="nowo-ui-card__body">
-        <table class="nowo-ui-data-table">
-            <thead>
-                <tr>
-                    <th>Case</th>
-                    <th>ISO</th>
-                    <th>en</th>
-                    <th>es</th>
-                    <th>fr</th>
-                    <th>de</th>
-                    <th>Twig |relative_time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in rows %}
-                <tr>
-                    <td>{{ row.label }}</td>
-                    <td><code>{{ row.iso }}</code></td>
-                    <td>{{ row.en }}</td>
-                    <td>{{ row.es }}</td>
-                    <td>{{ row.fr }}</td>
-                    <td>{{ row.de }}</td>
-                    <td>{{ row.iso|relative_time(null, now) }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        </div>
-    </section>
-
-    <section class="nowo-ui-card">
-        <div class="nowo-ui-card__header"><h2 class="nowo-ui-card__title">Twig helpers</h2></div>
-        <div class="nowo-ui-card__body">
-        <p><code>ago</code> filter: {{ rows[2].iso|ago(null, now) }}</p>
-        <p><code>relative_time()</code> function (es): {{ relative_time(rows[2].iso, 'es', now) }}</p>
-        </div>
-    </section>
+    {% embed '@NowoUiKit/demo_platform/_section.html.twig' with {title: 'Twig helpers', kind: 'detail', testid: 'demo-helpers'} %}
+        {% block section_body %}
+            <dl class="nowo-ui-detail-list">
+                <div class="nowo-ui-detail-list__item"><dt class="nowo-ui-detail-list__term"><code class="nowo-ui-code">ago</code> filter</dt><dd class="nowo-ui-detail-list__value">{{ rows[2].iso|ago(null, now) }}</dd></div>
+                <div class="nowo-ui-detail-list__item"><dt class="nowo-ui-detail-list__term"><code class="nowo-ui-code">relative_time()</code> function (es)</dt><dd class="nowo-ui-detail-list__value">{{ relative_time(rows[2].iso, 'es', now) }}</dd></div>
+            </dl>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
