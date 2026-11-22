@@ -15,6 +15,6 @@ class DemoControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Relative Time Bundle');
-        self::assertSelectorExists('section');
+        self::assertSelectorExists('[data-testid="demo-platform"]');
     }
 }
