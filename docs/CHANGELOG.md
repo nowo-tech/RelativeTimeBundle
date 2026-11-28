@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- PHP 8.6 and Symfony 8.2 support in CI (both stable, no allowed failures): `composer.json` allows PHP below 8.7 (was below 8.6) and a forward-compatibility workflow runs the suite on PHP 8.6 and on Symfony 8.2.
 - Demo: runs in UiKit's demo platform shell (`nowo-tech/ui-kit-bundle` ^2.60); the demo's own header is gone and the page uses the shell page header and section cards. The demo gains a minimal Playwright e2e (`make test-e2e`). Demo only, no bundle change.
 - Spec Kit: `specs/001-baseline/code-inventory.md` maps `Contract/RelativeTimeFormatterInterface` (14/14 artifacts) (REQ-SPECKIT-001/003)
 - Demo: `symfony/debug-bundle` in the Symfony 8 demo dev stack (REQ-DEMO-001)
