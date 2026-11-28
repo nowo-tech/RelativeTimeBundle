@@ -49,7 +49,7 @@ public function label(\DateTimeInterface $createdAt): string
 
 ## Requirements
 
-- PHP >= 8.2, < 8.6
+- PHP >= 8.2, < 8.7
 - Symfony 7.4+ or 8.x with FrameworkBundle (`symfony/framework-bundle`: the `translator` service and bundle translation discovery), `symfony/translation`, Twig
 - Twig 3.8+ or 4.x
 
